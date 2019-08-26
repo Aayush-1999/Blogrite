@@ -1,0 +1,12 @@
+{
+  "name": "blogrite",
+  "version": "1.0.0",
+  "description": "This is a blogging web app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Aayush Agarwal",
+  "license": "ISC"
+}
