@@ -8,14 +8,12 @@ This is a **Blogging Web App** where you can:
 
 ### SERVER
 
-The Server is made on ***Node.js*** (v10.15.3)
-
+The Server is made on ***Node.js*** (v10.15.3)<br/>
 ***Express.js*** is used as the server framework (v4.17.1)
 
 ### DATABASE
 
-The database used is ***MongoDB*** and is hosted on a ***MongoDB Atlas Cluster***.
-
+The database used is ***MongoDB*** and is hosted on a ***MongoDB Atlas Cluster***.<br/>
 ***Mongoose.js*** is used as an ODM (v5.6.11)
 
 ### FRONT-END
