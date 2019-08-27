@@ -1,5 +1,7 @@
 # BlogRite
 
+[![Website shields.io](https://img.shields.io/website/PROTOCOL/URLREST.svg)]
+
 This is a **Blogging Web App** where you can:
 - Read blogs
 - Write blogs
