@@ -1,0 +1,15 @@
+.form-width{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-title{
+    text-align: center;
+}
+
+.button-image{
+    height: 22px;
+    width: 22px;
+}
+

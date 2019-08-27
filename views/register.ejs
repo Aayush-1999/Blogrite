@@ -1,0 +1,43 @@
+<% include ./partials/header %>
+
+<div class="container">
+  <div class="row form-width">
+    <h3 class="form-title" >Sign Up</h3>
+    <form action="/register" method="POST" class="col s12">
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <input  id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <h6>OR</h6>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <a class="waves-effect waves-light btn-large red darken-3">With Google</a>
+        </div>
+        <div class="input-field col s12 m6 ">
+          <a class="waves-effect waves-light btn-large  indigo darken-2">With Facebook</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<% include ./partials/footer %>

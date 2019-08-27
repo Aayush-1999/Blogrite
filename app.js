@@ -9,8 +9,13 @@ const express               = require("express");
       passportLocalMongoose = require("passport-local-mongoose");
       methodOverride        = require("method-override");
       expressSession        = require("express-session");
+      User                  = require("./models/user");
 
 require("dotenv").config();
+
+//ROUTES
+
+const indexRoute = require("./routes/index");
 
 mongoose.connect(process.env.DATABASEURL,{useNewUrlParser:true});
 mongoose.set("useFindAndModify",false);
@@ -21,9 +26,8 @@ app.use(express.static(__dirname+"/public"));
 app.set("view engine","ejs");
 app.use(methodOverride("_method"));
 
-app.get("/",(req,res)=>{
-    console.log("everything okay");
-})
+app.use("/",indexRoute);
+
 
 app.listen(process.env.PORT||3000)
 {
