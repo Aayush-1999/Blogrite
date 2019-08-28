@@ -1,5 +1,5 @@
 .form-width{
-    width: 50%;
+    width: 45%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -13,3 +13,26 @@
     width: 22px;
 }
 
+.fb-button{
+    height: 22px;
+    width: 22px;
+    /* background: white; */
+    /* color: #3B5998; */
+}
+
+.center{
+    text-align: center;
+}
+
+.btn-large{
+    width: 100%;
+}
+
+/* CHECK and FIX THIS */
+@media only screen and (max-width:399px){
+    .form-width{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
