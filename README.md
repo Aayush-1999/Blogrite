@@ -18,14 +18,14 @@ The Server is made on `Node.js (v10.15.3)`
 
 The database used is `MongoDB` and is hosted on a `MongoDB Atlas Cluster`.
 <br/>
-****Mongoose.js**** is used as an ODM (v5.6.11)
+`Mongoose.js` is used as an ODM (v5.6.11)
 
 ### FRONT-END
 
-- The Front-end is made with ****HTML, CSS and JS***.
-- ****Materialize.css**** is used for better styling of the project.
-- ****Font Awesome**** for icons
-- ****Animate.css**** for animations
+- The Front-end is made with `HTML, CSS and JS`.
+- `Materialize.css` is used for better styling of the project.
+- `Font Awesome` for icons
+- `Animate.css` for animations
 
 ### SECURITY
 
@@ -39,11 +39,11 @@ Many security precautions have been taken:
 
 ### AUTHENTICATION
 
-****Passport.js**** has been integrated into the application for Secure Authentication of User Credentials over OAuth 2.0 from Google, Facebook, and Local Email Verification.
+`Passport.js` has been integrated into the application for Secure Authentication of User Credentials over OAuth 2.0 from Google, Facebook, and Local Email Verification.
 
 ### MISC
 
-****nodemailer**** has been used for sending emails(verification emails) to the users.
+`nodemailer` has been used for sending emails(verification emails) to the users.
 
 ### For Developers
 
@@ -53,7 +53,7 @@ The file ./bin/config/config exports the config object which is a cover over the
 
 ### Express Security
 
-For security ****Helmet**** is used with its defaults and additionally ****Content Security Policy****
+For security `Helmet` is used with its defaults and additionally `Content Security Policy`.
 
 Additionally other mechanisms are also used:-
 
