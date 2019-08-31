@@ -2,13 +2,8 @@ const express               = require("express");
       app                   = express();
       bodyParser            = require("body-parser");
       mongoose              = require("mongoose");
-      passport              = require("passport");
-      localStrategy         = require("passport-local");
-      facebookStrategy      = require("passport-facebook");
-      googleStrategy        = require("passport-google-oauth20");
-      passportLocalMongoose = require("passport-local-mongoose");
       methodOverride        = require("method-override");
-      expressSession        = require("express-session");
+    //   expressSession        = require("express-session");
       User                  = require("./models/user");
 
 require("dotenv").config();
