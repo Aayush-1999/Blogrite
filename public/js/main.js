@@ -1,12 +1,10 @@
-(function($){
+document.addEventListener('DOMContentLoaded', function() {
+    var dropdowns = document.querySelectorAll('.dropdown-trigger')
+    M.Dropdown.init(dropdowns,{});
+});
 
-    $(document).ready(function(){
-        $(".dropdown-trigger").dropdown();
-    });
-    
-    $(document).ready(function(){
-        $('.sidenav').sidenav();
-    });
-
-})
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    M.Sidenav.init(elems,{});
+});
 

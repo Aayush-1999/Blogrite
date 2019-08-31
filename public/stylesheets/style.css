@@ -19,19 +19,54 @@
     margin-top: 15px;
 }
 
-.center{
-    text-align: center;
+.brand-logo{
+    margin-left: 15px;
 }
 
 .btn-large{
     width: 100%;
 }
 
+.search-input{
+    max-width: 450pt;
+    max-width: calc(100% - 350px);
+}
+
+.search-form{
+    margin-left: 300px;
+}
+
 /* CHECK and FIX THIS */
-@media only screen and (max-width:399px){
+@media only screen and (max-width:499px){
     .form-width{
         width: 90%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .search-form{
+        margin-left: 60px;    
+    }
+
+    .search-input{
+        max-width: 160pt;
+    }
+}
+
+@media only screen and (min-width:500px) and (max-width:749px){
+    .search-input{
+        max-width: calc(100% - 300px);
+    }
+    .search-form{
+        margin-left: 60px;    
+    }
+}
+
+@media only screen and (min-width:750px) and (max-width:999px){
+    .search-input{
+        max-width: calc(100% - 420px);
+    }
+    .search-form{
+        margin-left: 60px;    
     }
 }
