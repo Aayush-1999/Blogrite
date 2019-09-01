@@ -1,6 +1,7 @@
 const express      = require("express"),
       router       = express.Router(),
       passport     = require("passport"),
+      bcrypt       = require("bcrypt"),
       User         = require("../models/user"),
     //   email        = require("./auth/email"),
       googleAuth   = require("./auth/google"),
@@ -8,7 +9,7 @@ const express      = require("express"),
       
 
 router.get("/",(req,res)=>{
-    res.render("landing"); 
+    res.send("Landing"); 
 });
 
 //SHOW REGISTER FORM
@@ -18,23 +19,34 @@ router.get("/register",(req,res)=>{
 
 //REGISTER LOGIC ROUTE
 router.post("/register",(req,res)=>{
-    let newUser=new User({
-        firstname:req.body.firstname,
-        lastname:req.body.lastname,
-        email:req.body.email
-    });
-    if(req.body.email==="aayushaggarwal2007@gmail.com")
-    {
-        newUser.isAdmin=true;   
-    }
-    User.register(newUser,req.body.password,(err,user)=>{
+    let saltRounds=10;
+    
+    bcrypt.hash(req.body.password, saltRounds, (err,hash)=> {
         if(err){
-            req.flash("error",err.message);
-            return res.render("register");
-       }
-       passport.authenticate("local")(req,res,function(){
-       res.redirect("/");
-       });
+            res.redirect("/register");
+        }
+        User.create({
+            firstName:req.body.firstname,
+            lastName:req.body.lastname,
+            email:req.body.email,
+            password:hash
+        }).then((err,user)=>{
+            if(err){
+                console.log(err);
+                // req.flash("error",err.message);
+                return res.render("register");
+            }   
+            else{
+                if(req.body.email==="aayushaggarwal2007@gmail.com")
+                {
+                    user.isAdmin=true;
+                    user.save();   
+                }
+                console.log(user);
+                res.redirect("/");
+            }
+        });
+        // res.redirect("/");
     });
 });
 

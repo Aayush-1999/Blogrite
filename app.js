@@ -3,7 +3,7 @@ const express               = require("express");
       bodyParser            = require("body-parser");
       mongoose              = require("mongoose");
       methodOverride        = require("method-override");
-    //   expressSession        = require("express-session");
+      middleware            = require("./middleware/index");
       User                  = require("./models/user");
 
 require("dotenv").config();
@@ -21,8 +21,9 @@ app.use(express.static(__dirname+"/public"));
 app.set("view engine","ejs");
 app.use(methodOverride("_method"));
 
-app.use("/",indexRoute);
+middleware(app);
 
+app.use("/",indexRoute);
 
 app.listen(process.env.PORT||3000)
 {

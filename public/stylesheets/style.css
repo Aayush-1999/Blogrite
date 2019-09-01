@@ -1,3 +1,13 @@
+ /* label focus color */
+.input-field input[type=text]:focus + label , input[type=email]:focus + label , input[type=password]:focus + label {
+    color: #1a237e !important;
+}
+
+.input-field input[type=text]:focus , input[type=email]:focus , input[type=password]:focus{
+    border-bottom: 1px solid #1a237e !important;
+    box-shadow: 0 1px 0 0 #1a237e !important;
+}
+
 .form-width{
     width: 45%;
     margin-left: auto;
@@ -19,6 +29,7 @@
     margin-top: 15px;
 }
 
+/* NAV BAR */
 .brand-logo{
     margin-left: 15px;
 }
