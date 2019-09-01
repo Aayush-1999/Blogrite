@@ -1,6 +1,7 @@
 # BlogRite
 
-[![Website shields.io](https://img.shields.io/website/PROTOCOL/URLREST.svg)](http://shields.io/)
+<img alt="David" src="https://img.shields.io/david/Aayush-1999/Blogrite?label=dependencies">
+<img alt="Code Quality" src="https://img.shields.io/badge/code%20quality-A-brightgreen">
 
 This is a **Blogging Web App** where you can:
 - Read blogs
@@ -30,10 +31,10 @@ The database used is `MongoDB` and is hosted on a `MongoDB Atlas Cluster`.
 ### SECURITY
 
 Many security precautions have been taken:
-
+- ***bcrypt***: For secure password saving in the database.
 - ***csurf***: For protection against CSRF attack on Forms and fetch requests.
 - ***helmet***: For protection against common Security Vulnerabilities inExpress framework.
-- ***jsonwebtoken(JWT)***: For Secure Email Verification Links.
+<!-- - ***jsonwebtoken(JWT)***: For Secure Email Verification Links. -->
 - ***Content Security Policy***: For Secure Content Delivery from the server.
 - ***limiter***: For Limiting the access to data from a particular client (150 requests per hour).
 
