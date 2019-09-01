@@ -18,36 +18,33 @@ router.get("/register",(req,res)=>{
 });
 
 //REGISTER LOGIC ROUTE
-router.post("/register",(req,res)=>{
-    let saltRounds=10;
+router.post("/register",async function(req,res){
+    try{
+        let saltRounds=10,hashcode;
     
-    bcrypt.hash(req.body.password, saltRounds, (err,hash)=> {
-        if(err){
-            res.redirect("/register");
-        }
-        User.create({
+        await bcrypt.hash(req.body.password, saltRounds, function(err,hash) {
+            hashcode=hash;
+        });
+
+        let user = await User.create({
             firstName:req.body.firstname,
             lastName:req.body.lastname,
             email:req.body.email,
-            password:hash
-        }).then((err,user)=>{
-            if(err){
-                console.log(err);
-                // req.flash("error",err.message);
-                return res.render("register");
-            }   
-            else{
-                if(req.body.email==="aayushaggarwal2007@gmail.com")
-                {
-                    user.isAdmin=true;
-                    user.save();   
-                }
-                console.log(user);
-                res.redirect("/");
-            }
-        });
-        // res.redirect("/");
-    });
+            password:hashcode
+        }); 
+         
+        if(req.body.email==="aayushaggarwal2007@gmail.com")
+        {
+            user.isAdmin=true;
+            user.save();   
+        }
+        console.log(user);
+        res.redirect("/");                    
+    }
+    catch(err){
+        console.log(err);
+        res.redirect("/register");
+    }    
 });
 
 //SHOW LOGIN FORM
