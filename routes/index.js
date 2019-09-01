@@ -33,7 +33,7 @@ router.post("/register",async function(req,res){
             password:hashcode
         }); 
          
-        if(req.body.email==="aayushaggarwal2007@gmail.com")
+        if(user.email==="aayushaggarwal2007@gmail.com")
         {
             user.isAdmin=true;
             user.save();   

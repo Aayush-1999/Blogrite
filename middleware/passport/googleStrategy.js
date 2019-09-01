@@ -25,7 +25,7 @@ module.exports = passport => {
                   var newUser = new User({
                      id:profile.id,
                      token:accessToken,
-                     firstname:profile.displayName,
+                     displayName:profile.displayName,
                      email:profile.emails[0].value,
                      image:profile.photos[0].value
                   });

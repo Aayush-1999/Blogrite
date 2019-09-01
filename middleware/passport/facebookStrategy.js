@@ -23,8 +23,8 @@ module.exports=passport=>{
                   var newUser = new User({
                      id:profile.id,
                      token:accessToken,
-                     firstname:profile.name.givenName,
-                     lastname:profile.name.familyName,
+                     firstName:profile.name.givenName,
+                     lastName:profile.name.familyName,
                      email:profile.emails[0].value,
                      image:profile.photos[0].value,
                      provider:"facebook"
