@@ -1,58 +1,62 @@
 <% include ./partials/header %>
 
-<div class="container" style="margin-top: 4rem;">
-    <h3 class="form-title" >Sign Up</h3>
+<div class="container" style="margin-top: 3rem;">
     <div class="form-width">
-      <form action="/register" method="POST" class="col s12">
-        <div class="row">
-          <div class="input-field col s12 m6">
-            <input  id="first_name" type="text" name="firstname" class="validate">
-            <label for="first_name">First Name</label>
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title"><p class=" form-title">Sign Up</p></span>
+            <form action="/register" method="POST" class="col s12">
+              <div class="row">
+                <div class="input-field col s12 m6">
+                  <input  id="first_name" type="text" name="firstname" class="validate">
+                  <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <input id="last_name" type="text" name="lastname" class="validate">
+                  <label for="last_name">Last Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" type="email" name="email" class="validate">
+                  <label for="email">Email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 ">
+                  <input id="password" type="password" name="password" class="validate">
+                  <label for="password">Password</label>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="input-field center col s12">
+                    <button class="waves-effect waves-light btn-large indigo darken-4">
+                      Sign Up
+                    </button>
+                  </div>
+                </div>
+              <h6 class="center">OR</h6>
+              <div class="row">
+                <div class="input-field  center col s12 m12 l6">
+                  <a class="waves-effect waves-light btn-large red darken-3" href="/auth/google" >
+                    <i class="material-icons left">
+                      <img src="/images/google-icon.svg" class="button-image">
+                    </i>
+                    Google
+                  </a>
+                </div>
+                <div class="input-field  center col s12 m12 l6 ">
+                  <a class="waves-effect waves-light btn-large  indigo darken-1" href="/auth/facebook">
+                    <i class="material-icons left">
+                      <img src="/images/fb-icon-1.jpg" class="fb-button">
+                    </i>
+                    Facebook
+                  </a>
+                </div>
+              </div>
+            </form>
           </div>
-          <div class="input-field col s12 m6">
-            <input id="last_name" type="text" name="lastname" class="validate">
-            <label for="last_name">Last Name</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="email" type="email" name="email" class="validate">
-            <label for="email">Email</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12 ">
-            <input id="password" type="password" name="password" class="validate">
-            <label for="password">Password</label>
-          </div>
-        </div>
-        <div class="row">
-            <div class="input-field center col s12">
-              <button class="waves-effect waves-light btn-large indigo darken-4">
-                Sign Up
-              </button>
-            </div>
-          </div>
-        <h6 class="center">OR</h6>
-        <div class="row">
-          <div class="input-field  center col s12 m12 l6">
-            <a class="waves-effect waves-light btn-large red darken-3" href="/auth/google" >
-              <i class="material-icons left">
-                <img src="/images/google-icon.svg" class="button-image">
-              </i>
-              Google
-            </a>
-          </div>
-          <div class="input-field  center col s12 m12 l6 ">
-            <a class="waves-effect waves-light btn-large  indigo darken-1" href="/auth/facebook">
-              <i class="material-icons left">
-                <img src="/images/fb-icon-1.jpg" class="fb-button">
-              </i>
-              Facebook
-            </a>
-          </div>
-        </div>
-      </form>
+        </div>   
     </div>
 </div>
 

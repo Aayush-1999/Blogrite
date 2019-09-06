@@ -1,7 +1,7 @@
 # BlogRite
 
-<img alt="David" src="https://img.shields.io/david/Aayush-1999/Blogrite?label=dependencies">
-<img alt="Code Quality" src="https://img.shields.io/badge/code%20quality-A-brightgreen">
+<a><img alt="David" src="https://img.shields.io/david/Aayush-1999/Blogrite?label=dependencies"></a>
+<a><img alt="Code Quality" src="https://img.shields.io/badge/code%20quality-A-brightgreen"></a>
 
 This is a **Blogging Web App** where you can:
 - Read blogs
