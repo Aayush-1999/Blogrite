@@ -60,6 +60,25 @@ body{
     margin-left: 300px;
 }
 
+/* Grow */
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
 /* CHECK and FIX THIS */
 @media only screen and (max-width:499px){
     .form-width{
@@ -97,9 +116,10 @@ body{
 
 @media only screen and (min-width: 600px){
     .container-home {
-        width: 85%;
+        width: 82%;
     }
 }
+
 
 @media only screen and (max-width:599px){
     .card.horizontal .card-image.card-image-horizontal{
