@@ -26,7 +26,7 @@ The database used is `MongoDB` and is hosted on a `MongoDB Atlas Cluster`.
 - The Front-end is made with `HTML, CSS and JS`.
 - `Materialize.css` is used for better styling of the project.
 - `Font Awesome` for icons
-- `Animate.css` for animations
+- `Animate.css` and `Hover.css` for animations
 
 ### SECURITY
 
