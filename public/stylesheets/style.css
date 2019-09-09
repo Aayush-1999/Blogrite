@@ -101,12 +101,6 @@ body{
     }
 }
 
-@media only screen and (min-width: 993px){
-    .container-home {
-        width: 83%;
-    }
-}
-
 @media only screen and (max-width:599px){
     .card.horizontal .card-image.card-image-horizontal{
         max-width:  100%;
