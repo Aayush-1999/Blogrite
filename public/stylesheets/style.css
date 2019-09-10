@@ -8,6 +8,10 @@ body{
     width: 90%;
 }
 
+.mt-3{
+    margin-top: 3rem;
+}
+
  /* label focus color */
 .input-field input[type=text]:focus + label , input[type=email]:focus + label , input[type=password]:focus + label {
     color: #1a237e !important;
