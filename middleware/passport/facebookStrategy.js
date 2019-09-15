@@ -25,6 +25,7 @@ module.exports=passport=>{
                      token:accessToken,
                      firstName:profile.name.givenName,
                      lastName:profile.name.familyName,
+                     displayName:profile.name.givenName + " " + profile.name.familyName, 
                      email:profile.emails[0].value,
                      image:profile.photos[0].value,
                      provider:"facebook"
