@@ -10,8 +10,8 @@ require("dotenv").config();
 //ROUTES
 
 const indexRoute   = require("./routes/index"),
-      blogRoute    = require("./routes/blog"),
-      commentRoute = require("./routes/comment");
+      blogRoute    = require("./routes/blog");
+    //   commentRoute = require("./routes/comment");
 
 
 mongoose.connect(process.env.DATABASEURL,{useNewUrlParser:true});
@@ -27,7 +27,7 @@ middleware(app);
 
 app.use("/",indexRoute);
 app.use("/blog",blogRoute);
-app.use("/blog/:id/comment",commentRoute);
+// app.use("/blog/:id/comment",commentRoute);
 
 app.listen(process.env.PORT||3000)
 {
