@@ -1,0 +1,14 @@
+<% include ../partials/header %>
+
+<div class="parallax-container">
+    <div class="parallax"><img src="<%=blog.image%>"></div>
+</div>
+
+<div class="section white">
+    <div class="row container">
+        <h2 class="header center"><%= blog.title %></h2>
+        <p class="grey-text text-darken-3 lighten-3"><%= blog.body %></p>
+    </div>
+</div>
+
+<% include ../partials/footer %>

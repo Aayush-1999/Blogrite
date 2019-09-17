@@ -8,4 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     M.Sidenav.init(elems,{});
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.parallax');
+    M.Parallax.init(elems, {});
+});
 

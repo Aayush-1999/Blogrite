@@ -58,7 +58,7 @@ router.post("/",upload.single('image'),async function(req,res){
         // }
         //redirect back to blogs page
         console.log("Blog created");
-        res.redirect("/blog");
+        res.redirect("/blog/${blog.id}");
     } catch(err) {
         console.log("Blog not created");
         console.log(err);
@@ -75,6 +75,14 @@ router.get("/",(req,res)=>{
             res.redirect("back");
         }
         else res.render("index",{blogs});
+    });
+})
+
+//SHOW SINGLE BLOG
+router.get("/:id",(req,res)=>{
+    Blog.findById(req.params.id,(err,blog)=>{
+        if(err) console.log(err);
+        else res.render("blog/show",{blog});
     });
 })
 

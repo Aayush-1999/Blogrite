@@ -12,6 +12,11 @@ body{
     margin-top: 3rem;
 }
 
+.card-link{
+    color: black;
+    cursor: pointer;
+}
+
  /* label focus color */
 .input-field input[type=text]:focus + label , 
  input[type=email]:focus + label , 

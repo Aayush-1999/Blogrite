@@ -6,82 +6,94 @@
         <div class="row">
             <% if(blogs[i]!=null){%>
                 <div class="col s12">
-                    <div class="card horizontal hvr-grow">
-                        <div class="card-image card-image-horizontal">
-                            <img src="<%= blogs[i].image %>">
-                        </div>
-                        <div class="card-stacked">
-                            <div class="card-content">
-                                <span class="card-title"><%= blogs[i].title %></span>
-                                <p><%= blogs[i].body.substring(0,300)+"..." %></p>
+                    <a class="card-link" href="/blog/<%=blogs[i]._id%>" >
+                        <div class="card horizontal hvr-grow">
+                            <div class="card-image card-image-horizontal">
+                                <img src="<%= blogs[i].image %>">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <span class="card-title center"><%= blogs[i].title %></span>
+                                    <p><%= blogs[i].body.substring(0,300)+"..." %></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             <%}%>
             <% if(blogs[i+1]!=null){%>
                 <div class="col s12 m6 l4">
-                    <div class="card  hvr-grow">
-                        <div class="card-image">
-                            <img src="<%= blogs[i+1].image %>">
+                    <a class="card-link" href="/blog/<%=blogs[i+1]._id%>" >
+                        <div class="card  hvr-grow">
+                            <div class="card-image">
+                                <img src="<%= blogs[i+1].image %>">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title"><%= blogs[i+1].title %></span>
+                                <p><%= blogs[i+1].body.substring(0,200)+"..." %></p>
+                            </div>
                         </div>
-                        <div class="card-content">
-                            <span class="card-title"><%= blogs[i+1].title %></span>
-                            <p><%= blogs[i+1].body.substring(0,200)+"..." %></p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             <%}%>
             <% if(blogs[i+2]!=null){%>
                 <div class="col s12 m6 l4">
-                    <div class="card  hvr-grow">
-                        <div class="card-image">
-                            <img src="<%= blogs[i+2].image %>">
+                    <a class="card-link" href="/blog/<%=blogs[i+2]._id%>" >
+                        <div class="card  hvr-grow">
+                            <div class="card-image">
+                                <img src="<%= blogs[i+2].image %>">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title"><%= blogs[i+2].title %></span>                        
+                                <p><%= blogs[i+2].body.substring(0,200)+"..." %></p>
+                            </div>
                         </div>
-                        <div class="card-content">
-                            <span class="card-title"><%= blogs[i+2].title %></span>                        
-                            <p><%= blogs[i+2].body.substring(0,200)+"..." %></p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             <%}%>
             <% if(blogs[i+3]!=null){%>
                 <div class="col s12 m6 l4">
-                    <div class="card  hvr-grow">
-                        <div class="card-image">
-                            <img src="<%= blogs[i+3].image %>">
+                    <a class="card-link" href="/blog/<%=blogs[i+3]._id%>" >
+                        <div class="card  hvr-grow">
+                            <div class="card-image">
+                                <img src="<%= blogs[i+3].image %>">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title"><%= blogs[i+3].title %></span>
+                                <p><%= blogs[i+3].body.substring(0,200)+"..." %></p>
+                            </div>
                         </div>
-                        <div class="card-content">
-                            <span class="card-title"><%= blogs[i+3].title %></span>
-                            <p><%= blogs[i+3].body.substring(0,200)+"..." %></p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             <%}%>
             <% if(blogs[i+4]!=null){%>
                 <div class="col s12 m6 l6">
-                    <div class="card  hvr-grow">
-                        <div class="card-image">
-                            <img src="<%= blogs[i+4].image %>"  style="max-height: 230px;">
+                    <a class="card-link" href="/blog/<%=blogs[i+4]._id%>" >
+                        <div class="card  hvr-grow">
+                            <div class="card-image">
+                                <img src="<%= blogs[i+4].image %>"  style="max-height: 230px;">
+                            </div>
+                            <div class="card-content">
+                                    <span class="card-title"><%= blogs[i+4].title %></span>
+                                <p><%= blogs[i+4].body.substring(0,200)+"..." %></p>
+                            </div>
                         </div>
-                        <div class="card-content">
-                                <span class="card-title"><%= blogs[i+4].title %></span>
-                            <p><%= blogs[i+4].body.substring(0,200)+"..." %></p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             <%}%>
             <% if(blogs[i+5]!=null){%>
                 <div class="col s12 m6 l6">
-                    <div class="card  hvr-grow">
-                        <div class="card-image">
-                            <img src="<%= blogs[i+5].image %>" style="max-height: 230px;">
+                    <a class="card-link" href="/blog/<%=blogs[i+5]._id%>" >
+                        <div class="card  hvr-grow">
+                            <div class="card-image">
+                                <img src="<%= blogs[i+5].image %>" style="max-height: 230px;">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title"><%= blogs[i+4].title %></span>
+                                <p><%= blogs[i+5].body.substring(0,200)+"..." %></p>
+                            </div>
                         </div>
-                        <div class="card-content">
-                            <span class="card-title"><%= blogs[i+4].title %></span>
-                            <p><%= blogs[i+5].body.substring(0,200)+"..." %></p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             <%}%>
         </div><% } %>
