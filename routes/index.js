@@ -9,7 +9,7 @@ const express      = require("express"),
       
 
 router.get("/",(req,res)=>{
-    res.render("index"); 
+    res.redirect("/blog"); 
 });
 
 //SHOW REGISTER FORM

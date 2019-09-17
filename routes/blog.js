@@ -27,11 +27,12 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-
+//SHOW FORM FOR CREATING NEW BLOG
 router.get("/create",(req,res)=>{
     res.render("blog/create");
 });
 
+//CREATING NEW BLOG
 router.post("/",upload.single('image'),async function(req,res){
     try{
         let result= await cloudinary.uploader.upload(req.file.path)// can also add webpurifier to purify images uploaded on server (for more details see cloudinary addons)
@@ -40,10 +41,10 @@ router.post("/",upload.single('image'),async function(req,res){
         // add image's public url to the campground object for identifying and deleting image on the cloudinary
         req.body.blog.imageId = result.public_id;
         // add author to campground
-        req.body.blog.author = {
-            id: req.user._id,
-            name: req.user.displayName
-        }
+        // req.body.blog.author = {
+        //     id: req.user._id,
+        //     name: req.user.displayName
+        // }
         let blog=await Blog.create(req.body.blog);
         // let user = await User.findById(req.user._id).populate('followers').exec();
         // let newNotification = {
@@ -55,9 +56,9 @@ router.post("/",upload.single('image'),async function(req,res){
         //     follower.notifications.push(notification);
         //     follower.save();
         // }
-        //redirect back to campgrounds page
+        //redirect back to blogs page
         console.log("Blog created");
-        // res.redirect("/blog/${blog.id}");
+        res.redirect("/blog");
     } catch(err) {
         console.log("Blog not created");
         console.log(err);
@@ -65,5 +66,16 @@ router.post("/",upload.single('image'),async function(req,res){
         res.redirect('back');
     }
 });
+
+//SHOW ALL BLOGS ON INDEX PAGE
+router.get("/",(req,res)=>{
+    Blog.find({},(err,blogs)=>{
+        if(err) {
+            console.log(err);
+            res.redirect("back");
+        }
+        else res.render("index",{blogs});
+    });
+})
 
 module.exports=router;
