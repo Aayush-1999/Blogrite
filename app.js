@@ -14,7 +14,7 @@ const indexRoute   = require("./routes/index"),
     //   commentRoute = require("./routes/comment");
 
 
-mongoose.connect(process.env.DATABASEURL,{useNewUrlParser:true});
+mongoose.connect(process.env.DATABASEURL,{ useUnifiedTopology: true ,useNewUrlParser:true});
 mongoose.set("useFindAndModify",false);
 mongoose.set("useCreateIndex",true);
 
@@ -24,6 +24,13 @@ app.set("view engine","ejs");
 app.use(methodOverride("_method"));
 
 middleware(app);
+
+app.use(function(req,res,next){
+    res.locals.currentUser = req.user;
+    // res.locals.error  =  req.flash("error");
+    // res.locals.success  =  req.flash("success");
+    next();
+ });
 
 app.use("/",indexRoute);
 app.use("/blog",blogRoute);
