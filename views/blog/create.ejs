@@ -14,8 +14,8 @@
           </div>
           <div class="row">
               <div class="input-field col s12">
-                  <textarea id="content" name="blog[body]" class="materialize-textarea"></textarea>
-                  <label for="content">Body</label>
+                  <textarea id="editor" name="blog[body]" class="materialize-textarea" placeholder="Write your blog here" ></textarea>
+                  <label for="editor"></label>
               </div>
           </div>
           <div class="row">
@@ -42,5 +42,14 @@
   </div>
 </div>
 
+<script>
+  ClassicEditor
+      .create( document.querySelector( '#editor' ), {
+        toolbar: [ 'Heading','|','bold', 'italic', 'Link','bulletedList', 'numberedList', 'blockQuote','Code','undo','redo']
+    } )
+      .catch( error => {
+          console.error( error );
+      } );
+</script>
 
 <% include ../partials/footer %>
