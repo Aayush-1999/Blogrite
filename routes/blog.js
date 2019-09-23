@@ -49,7 +49,7 @@ router.post("/",upload.single('image'),async function(req,res){
         // let user = await User.findById(req.user._id).populate('followers').exec();
         // let newNotification = {
         //     username: req.user.username,
-        //     campgroundId: campground.id
+        //     campgroundId: blog.id
         // }
         // for(const follower of user.followers) {
         //     let notification = await Notification.create(newNotification);
@@ -58,7 +58,7 @@ router.post("/",upload.single('image'),async function(req,res){
         // }
         //redirect back to blogs page
         console.log("Blog created");
-        res.redirect("/blog/${blog.id}");
+        res.redirect("/blog/"+blog.id);
     } catch(err) {
         console.log("Blog not created");
         console.log(err);
@@ -82,7 +82,17 @@ router.get("/",(req,res)=>{
 router.get("/:id",(req,res)=>{
     Blog.findById(req.params.id,(err,blog)=>{
         if(err) console.log(err);
-        else res.render("blog/show",{blog});
+        else {
+            // let blogContent=String.raw(blog.body);
+            res.render("blog/show",{blog});
+        }
+    });
+})
+
+//SHOW FORM FOR UPDATING A BLOG
+router.get("/:id/edit",(req,res)=>{
+    Blog.findById(req.params.id,(err,blog)=>{
+        res.render("blog/edit",{blog});
     });
 })
 
