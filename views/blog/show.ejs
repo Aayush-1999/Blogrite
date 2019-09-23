@@ -7,7 +7,15 @@
 <div class="section white">
     <div class="row container">
         <h2 class="header center"><%= blog.title %></h2>
-        <p class="grey-text text-darken-3 lighten-3 ck-content"><%= blog.body%></p>
+        <p class="grey-text text-darken-3 lighten-3 ck-content" id="blog-content">
+            <%= blog.body %>
+        </p>
+        <hr>
+        <div class="row">
+            <a class="col s8 m10" >Comments</a>
+            <a class="col s2 m1" href="/blog/<%=blog.id%>/edit">Edit</a>
+            <a class="col s2 m1">Delete</a>
+        </div>
     </div>
 </div>
 
