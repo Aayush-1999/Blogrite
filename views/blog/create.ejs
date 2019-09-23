@@ -43,13 +43,13 @@
 </div>
 
 <script>
-  ClassicEditor
-      .create( document.querySelector( '#editor' ), {
-        toolbar: [ 'Heading','|','bold', 'italic', 'Link','bulletedList', 'numberedList', 'blockQuote','Code','undo','redo']
-    } )
-      .catch( error => {
-          console.error( error );
-      } );
+    ClassicEditor
+        .create( document.querySelector( '#editor' ), {
+          toolbar: [ 'Heading','|','bold', 'italic', 'Link','bulletedList', 'numberedList', 'blockQuote','Code','undo','redo']
+      } )
+        .catch( error => {
+            console.error( error );
+        } );
 </script>
 
 <% include ../partials/footer %>
