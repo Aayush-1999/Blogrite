@@ -5,16 +5,16 @@
     <div class="card animated zoomIn faster">
       <div class="card-content">
         <span class="card-title"><p class="form-title">Update Blog</p></span>
-        <form action="/blog" method="POST" class="col s12" enctype="multipart/form-data">
+        <form action="/blog/<%=blog._id %>?_method=PUT" method="POST" class="col s12" enctype="multipart/form-data">
           <div class="row">
             <div class="input-field col s12">
-              <input id="title" type="text" name="blog[title]" value="<%= blog.title %>" class="validate">
+              <input id="title" type="text" name="title" value="<%= blog.title %>" class="validate">
               <label for="title">Title</label>
             </div>
           </div>
           <div class="row">
               <div class="input-field col s12">
-                  <textarea id="editor" name="blog[body]" class="materialize-textarea" value="<%= blog.body %>" placeholder="Write your blog here" ></textarea>
+                  <textarea id="editor" name="body" class="materialize-textarea" value="<%= blog.body %>" placeholder="Write your blog here" ></textarea>
                   <label for="editor"></label>
               </div>
           </div>
