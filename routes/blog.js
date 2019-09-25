@@ -3,7 +3,7 @@ const express        = require("express"),
       Blog           = require("../models/blog"),
       User           = require("../models/user"),
       methodOverride = require("method-override"),
-      middleware     =require("../middleware"),
+      middleware     = require("../middleware"),
       multer         = require('multer');
 
 const storage = multer.diskStorage({
@@ -83,7 +83,6 @@ router.get("/:id",(req,res)=>{
     Blog.findById(req.params.id,(err,blog)=>{
         if(err) console.log(err);
         else {
-            // let blogContent=String.raw(blog.body);
             res.render("blog/show",{blog});
         }
     });
@@ -93,6 +92,32 @@ router.get("/:id",(req,res)=>{
 router.get("/:id/edit",(req,res)=>{
     Blog.findById(req.params.id,(err,blog)=>{
         res.render("blog/edit",{blog});
+    });
+})
+
+//UPDATE BLOG
+router.put("/:id",upload.single('image'),(req,res)=>{
+    Blog.findById(req.params.id,async function(err,blog){
+        if(err) console.log(err);
+        else{
+            if(req.file){
+                try{
+                    await cloudinary.uploader.destroy(blog.imageId);               
+                    let result=await cloudinary.uploader.upload(req.file.path);
+                    blog.image=result.secure_url;
+                    blog.imageId=result.public_id;
+                }
+                catch(err){
+                //   req.flash("error",err.message);
+                    res.redirect("/campground/"+ req.params.id + "/edit");
+                }
+            }    
+            blog.title=req.body.title;
+            blog.body=req.body.body;
+            blog.save();
+            // req.flash("success","Campground Updated successfully")
+            res.redirect("/blog/" + req.params.id);
+        }
     });
 })
 
