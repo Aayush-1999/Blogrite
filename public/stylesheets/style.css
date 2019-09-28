@@ -17,6 +17,10 @@ body{
     cursor: pointer;
 }
 
+.card-three{
+    height:384px;
+}
+
  /* label focus color */
 .input-field input[type=text]:focus + label , 
  input[type=email]:focus + label , 
