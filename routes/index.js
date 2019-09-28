@@ -9,7 +9,7 @@ const express      = require("express"),
       
 
 router.get("/",(req,res)=>{
-    res.render("index"); 
+    res.redirect("/blog"); 
 });
 
 //SHOW REGISTER FORM
@@ -29,6 +29,7 @@ router.post("/register",async function(req,res){
         let user = await User.create({
             firstName:req.body.firstname,
             lastName:req.body.lastname,
+            displayName:req.body.firstName + " " + req.body.lastName,
             email:req.body.email,
             password:hashcode
         }); 

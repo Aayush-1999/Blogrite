@@ -1,0 +1,61 @@
+<% include ../partials/header %>
+
+<div class="container">
+  <div class="blog-form-width mt-3">
+    <div class="card animated zoomIn faster">
+      <div class="card-content">
+        <span class="card-title"><p class="form-title">Update Blog</p></span>
+        <form action="/blog/<%=blog._id %>?_method=PUT" method="POST" class="col s12" enctype="multipart/form-data">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="title" type="text" name="title" value="<%= blog.title %>" class="validate">
+              <label for="title">Title</label>
+            </div>
+          </div>
+          <div class="row">
+              <div class="input-field col s12">
+                  <p style="display: none"  id="blog_content_old">                
+                      <%=blog.body%>
+                  </p>
+                  <textarea id="editor" name="body" class="materialize-textarea" value="<%= blog.body %>" placeholder="Write your blog here" ></textarea>
+                  <label for="editor"></label>
+              </div>
+          </div>
+          <div class="row">
+              <div class="file-field input-field">
+                  <div class="btn indigo darken-4">
+                    <span>Image</span>
+                    <input type="file" name="image" accept="image/*">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="input-field center col s12">
+              <button class="waves-effect waves-light btn-large indigo darken-4">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    var blog_body=document.getElementById("blog_content_old").innerText;
+    ClassicEditor
+        .create( document.querySelector( '#editor' ), {
+          toolbar: [ 'Heading','|','bold', 'italic', 'Link','bulletedList', 'numberedList', 'blockQuote','Code','undo','redo']
+      } ).then(editor=>{
+        editor.setData(blog_body);
+      })
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
+<% include ../partials/footer %>

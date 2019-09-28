@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const blogSchema = new mongoose.Schema({
+const blogSchema = new mongoose.Schema([{
     title:String,
     image:String,
     imageId:String,
@@ -22,7 +22,7 @@ const blogSchema = new mongoose.Schema({
             ref:"Comment"
         }
     ]
-});
+}]);
 
 module.exports=mongoose.model("Blog",blogSchema);
 

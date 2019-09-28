@@ -12,14 +12,36 @@ body{
     margin-top: 3rem;
 }
 
+.card-link{
+    color: black;
+    cursor: pointer;
+}
+
+.card-three{
+    height:384px;
+}
+
  /* label focus color */
-.input-field input[type=text]:focus + label , input[type=email]:focus + label , input[type=password]:focus + label {
+.input-field input[type=text]:focus + label , 
+ input[type=email]:focus + label , 
+ input[type=password]:focus + label {
     color: #1a237e !important;
 }
 
-.input-field input[type=text]:focus , input[type=email]:focus , input[type=password]:focus{
+.input-field input[type=text]:focus , 
+input[type=email]:focus , 
+input[type=password]:focus{
     border-bottom: 1px solid #1a237e !important;
     box-shadow: 0 1px 0 0 #1a237e !important;
+}
+
+.input-field textarea:focus + label {
+    color: #1a237e !important;
+}
+
+.input-field textarea:focus {
+    border-bottom: 1px solid #1a237e !important;
+    box-shadow: 0 1px 0 0 #1a237e !important
 }
 
 .form-width{
@@ -33,6 +55,12 @@ body{
     color: #1a237e;
     font-size: 28px;
     font-weight: 400;
+}
+
+.blog-form-width{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .button-image{
@@ -68,24 +96,24 @@ body{
 .hvr-grow {
     display: inline-block;
     vertical-align: middle;
-    transform: translateZ(0);
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    backface-visibility: hidden;
-    -moz-osx-font-smoothing: grayscale;
-    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    /* transition-duration: 0.3s !important; */
+    transition: all 0.5s ease !important;
+    -webkit-transition-property: transform;
     transition-property: transform;
-}
-
-.hvr-grow:hover,
-.hvr-grow:focus,
-.hvr-grow:active {
-    transform: scale(1.02);
-    cursor: pointer;
-}
+  }
+  .hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.03);
+  }
 
 /* CHECK and FIX THIS */
 @media only screen and (max-width:499px){
-    .form-width{
+    .form-width,
+    .blog-form-width{
         width: 95%;
         margin-left: auto;
         margin-right: auto;
@@ -130,13 +158,6 @@ body{
         max-width:  100%;
     }
     .card.horizontal {
-        /* display: -webkit-box; */
-        /* display: -webkit-flex; */
-        /* display: -ms-flexbox; */
-        /* display: flex; */
         display: block !important;
     }
-}
-
-@media only screen and (min-width:750px) and (max-width:999px){
 }

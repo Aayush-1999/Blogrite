@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+
+<div class="parallax-container">
+    <div class="parallax"><img src="<%=blog.image%>"></div>
+</div>
+
+<div class="section white">
+    <div class="row container">
+        <h2 class="header center"><%= blog.title %></h2>
+        <p class="grey-text text-darken-3 lighten-3 ck-content" style="display: none"  id="blog_content_old">                
+            <%=blog.body%>
+        </p>
+        <p class="grey-text text-darken-3 lighten-3 ck-content" id="blog_content_new">                
+        </p>
+        <hr>
+        <div class="row">
+            <a class="col s8 m10" >Comments</a>
+            <a class="col s2 m1" href="/blog/<%=blog.id%>/edit">Edit</a>
+            <form action="/blog/<%=blog._id%>?_method=DELETE" method="POST" >
+                <button>Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        // $.ajax({
+        //     url: `/blog/<%=blog._id%>`,
+        //     type: 'get',
+        //     success: (data) => {
+        //         $('#blog_content').html('<%=blog.body%>')
+        
+        //     }
+        // });
+        var blog_body=document.getElementById("blog_content_old").innerText;
+        document.getElementById("blog_content_new").innerHTML=blog_body;
+    })
+</script>
+
+<% include ../partials/footer %>
