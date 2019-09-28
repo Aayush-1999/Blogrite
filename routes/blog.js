@@ -121,4 +121,21 @@ router.put("/:id",upload.single('image'),(req,res)=>{
     });
 })
 
+//DELETE A BLOG
+router.delete("/:id",(req,res)=>{
+    Blog.findById(req.params.id,async function(err,blog){
+        try{
+           await cloudinary.uploader.destroy(blog.imageId); 
+           blog.remove();
+        //    req.flash("success","Campground deleted successfully");
+           res.redirect("/blog");
+        }
+        catch(err){
+            console.log(err);
+        //    req.flash("error",err.message);
+           return res.redirect("back");  
+        }
+     });
+})
+
 module.exports=router;
