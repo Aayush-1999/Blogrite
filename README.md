@@ -34,7 +34,7 @@ Many security precautions have been taken:
 - ***bcrypt***: For secure password saving in the database.
 - ***csurf***: For protection against CSRF attack on Forms and fetch requests.
 - ***helmet***: For protection against common Security Vulnerabilities inExpress framework.
-<!-- - ***jsonwebtoken(JWT)***: For Secure Email Verification Links. -->
+- ***jsonwebtoken(JWT)***: For Secure Email Verification Links.
 - ***Content Security Policy***: For Secure Content Delivery from the server.
 - ***limiter***: For Limiting the access to data from a particular client (150 requests per hour).
 
@@ -46,11 +46,6 @@ Many security precautions have been taken:
 
 `nodemailer` has been used for sending emails(verification emails) to the users.
 
-### For Developers
-
-Config Object
-
-The file ./bin/config/config exports the config object which is a cover over the .env file for better protections and encapsulation (Create a .env file first in bin folder). the ./bin/config directory also have the development.js, production.js and testing.js files for fine tuning the config object in the respective NODE_ENV for more info open these files and go through the comments.
 
 ### Express Security
 
@@ -75,7 +70,7 @@ this will return an express middleware which can be used on any route, router or
 - **npm run localTunnel** - exposes localhost:1998 to the world wide web
 - **npm run lt** - runs npm start and npm run localTunnel in parallel
 - **Use npm run** --silent <your-script> to hide the internal logs from your terminal window.
-eg: npm run --silent start-w or npm run --silent start-w-lite
+
 
 ### To-Do
 
