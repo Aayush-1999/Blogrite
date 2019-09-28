@@ -14,6 +14,9 @@
           </div>
           <div class="row">
               <div class="input-field col s12">
+                  <p style="display: none"  id="blog_content_old">                
+                      <%=blog.body%>
+                  </p>
                   <textarea id="editor" name="body" class="materialize-textarea" value="<%= blog.body %>" placeholder="Write your blog here" ></textarea>
                   <label for="editor"></label>
               </div>
@@ -43,11 +46,12 @@
 </div>
 
 <script>
+    var blog_body=document.getElementById("blog_content_old").innerText;
     ClassicEditor
         .create( document.querySelector( '#editor' ), {
           toolbar: [ 'Heading','|','bold', 'italic', 'Link','bulletedList', 'numberedList', 'blockQuote','Code','undo','redo']
       } ).then(editor=>{
-        editor.setData("<%=blog.body %>");
+        editor.setData(blog_body);
       })
         .catch( error => {
             console.error( error );
