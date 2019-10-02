@@ -18,7 +18,15 @@ body{
 }
 
 .card-three{
-    height:384px;
+    height:410px;
+}
+
+.card-two{
+    height: 425px;
+}
+
+.card-two img{
+    height: 220px;
 }
 
  /* label focus color */
@@ -128,12 +136,43 @@ input[type=password]:focus{
     }
 }
 
+@media only screen and (max-width:699px){
+    .card.horizontal .card-image.card-image-horizontal{
+        max-width:  100%;
+    }
+    .horizontal-card-image{
+        width: 100% !important;
+    }
+    .card.horizontal {
+        display: block !important;
+    }
+}
+
 @media only screen and (min-width:500px) and (max-width:749px){
     .search-input{
         max-width: calc(100% - 300px);
     }
     .search-form{
         margin-left: 60px;    
+    }
+}
+
+@media only screen and (min-width: 700px){
+    .container-home {
+        max-width: 82%;
+    }
+    .horizontal-card-image{
+        height: 100%;
+        width: 100% !important;
+    }
+    .card-image.card-image-horizontal{
+        height: 335px;
+        width: 65% !important;
+        max-width: 70% !important;
+    }
+    
+    .card-three img{
+        height: 174px;
     }
 }
 
@@ -146,18 +185,22 @@ input[type=password]:focus{
     }
 }
 
-@media only screen and (min-width: 600px){
-    .container-home {
-        width: 82%;
+@media only screen and (min-width:601px) and (max-width:699px){
+    .card-two img{
+        height: 149px;
+    }
+    .card-two{
+        height: 410px;  
+    }
+}
+
+@media only screen and (min-width:701px) and (max-width:999px){
+    .card-two img{
+        height: 174px;
+    }
+    .card-two{
+        height: 410px;  
     }
 }
 
 
-@media only screen and (max-width:599px){
-    .card.horizontal .card-image.card-image-horizontal{
-        max-width:  100%;
-    }
-    .card.horizontal {
-        display: block !important;
-    }
-}
