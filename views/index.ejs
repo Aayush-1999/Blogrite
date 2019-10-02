@@ -14,7 +14,8 @@
                             <div class="card-stacked">
                                 <div class="card-content">
                                     <span class="card-title center"><%= blogs[i].title %></span>
-                                    <p><%= blogs[i].body.substring(0,500)+"..." %></p>
+                                    <p class="blog_content_old" style="display: none;"><%= blogs[i].body.substring(0,500)+"..." %></p>
+                                    <p class="blog_content_new"></p>
                                 </div>
                             </div>
                         </div>
@@ -30,7 +31,8 @@
                             </div>
                             <div class="card-content">
                                 <span class="card-title"><%= blogs[i+1].title %></span>
-                                <p><%= blogs[i+1].body.substring(0,200)+"..." %></p>
+                                <p class="blog_content_old" style="display: none;"><%= blogs[i+1].body.substring(0,200)+"..." %></p>
+                                <p class="blog_content_new"></p>
                             </div>
                         </div>
                     </a>
@@ -45,7 +47,8 @@
                             </div>
                             <div class="card-content">
                                 <span class="card-title"><%= blogs[i+2].title %></span>                        
-                                <p><%= blogs[i+2].body.substring(0,200)+"..." %></p>
+                                <p class="blog_content_old" style="display: none;"><%= blogs[i+2].body.substring(0,200)+"..." %></p>
+                                <p class="blog_content_new"></p>
                             </div>
                         </div>
                     </a>
@@ -60,7 +63,8 @@
                             </div>
                             <div class="card-content">
                                 <span class="card-title"><%= blogs[i+3].title %></span>
-                                <p><%= blogs[i+3].body.substring(0,200)+"..." %></p>
+                                <p class="blog_content_old" style="display: none;"><%= blogs[i+3].body.substring(0,200)+"..." %></p>
+                                <p class="blog_content_new"></p>
                             </div>
                         </div>
                     </a>
@@ -75,7 +79,8 @@
                             </div>
                             <div class="card-content">
                                     <span class="card-title"><%= blogs[i+4].title %></span>
-                                <p><%= blogs[i+4].body.substring(0,250)+"..." %></p>
+                                <p class="blog_content_old" style="display: none;"><%= blogs[i+4].body.substring(0,250)+"..." %></p>
+                                <p class="blog_content_new"></p>
                             </div>
                         </div>
                     </a>
@@ -90,7 +95,8 @@
                             </div>
                             <div class="card-content">
                                 <span class="card-title"><%= blogs[i+4].title %></span>
-                                <p><%= blogs[i+5].body.substring(0,250)+"..." %></p>
+                                <p class="blog_content_old" style="display: none;"><%= blogs[i+5].body.substring(0,250)+"..." %></p>
+                                <p class="blog_content_new"></p>
                             </div>
                         </div>
                     </a>
@@ -99,5 +105,16 @@
         </div><% } %>
     </section>
 </div>
+
+<script>
+    $(document).ready(function(){
+        var blogs_length=<%=blogs.length%>;
+        var blog_body=document.getElementsByClassName("blog_content_old");
+        var blog_body_new=document.getElementsByClassName("blog_content_new");
+        for(i=0;i<blogs_length;i++){
+            blog_body_new[i].innerHTML=blog_body[i].innerText;
+        }
+    })
+</script>
 
 <% include ./partials/footer %>
