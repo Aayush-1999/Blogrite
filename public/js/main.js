@@ -12,3 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.parallax');
     M.Parallax.init(elems, {});
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, {
+        hoverEnabled: false
+    });
+  });
