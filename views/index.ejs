@@ -9,13 +9,13 @@
                     <a class="card-link" href="/blog/<%=blogs[i]._id%>" >
                         <div class="card horizontal hvr-grow">
                             <div class="card-image card-image-horizontal">
-                                <img src="<%= blogs[i].image %>" style="height: 365px;">
+                                <img class="horizontal-card-image" src="<%= blogs[i].image %>">
                             </div>
                             <div class="card-stacked">
                                 <div class="card-content">
-                                    <span class="card-title center"><%= blogs[i].title %></span>
-                                    <p class="blog_content_old" style="display: none;"><%= blogs[i].body.substring(0,500)+"..." %></p>
-                                    <p class="blog_content_new"></p>
+                                    <span class="card-title center"><b><%= blogs[i].title %></b></span>
+                                    <p class="blog_content_old" style="display: none;"><%= blogs[i].body.substring(0,200)+"..." %></p>
+                                    <p class="blog_content_new"  style="font-size: 16px;" ></p>
                                 </div>
                             </div>
                         </div>
@@ -27,10 +27,10 @@
                     <a class="card-link" href="/blog/<%=blogs[i+1]._id%>" >
                         <div class="card card-three hvr-grow">
                             <div class="card-image">
-                                <img src="<%= blogs[i+1].image %>" style="height: 164px;" >
+                                <img src="<%= blogs[i+1].image %>">
                             </div>
                             <div class="card-content">
-                                <span class="card-title"><%= blogs[i+1].title %></span>
+                                <span class="card-title"><b><%= blogs[i+1].title %></b></span>
                                 <p class="blog_content_old" style="display: none;"><%= blogs[i+1].body.substring(0,200)+"..." %></p>
                                 <p class="blog_content_new"></p>
                             </div>
@@ -43,10 +43,10 @@
                     <a class="card-link" href="/blog/<%=blogs[i+2]._id%>" >
                         <div class="card card-three hvr-grow">
                             <div class="card-image">
-                                <img src="<%= blogs[i+2].image %>" style="height: 164px;">
+                                <img src="<%= blogs[i+2].image %>">
                             </div>
                             <div class="card-content">
-                                <span class="card-title"><%= blogs[i+2].title %></span>                        
+                                <span class="card-title"><b><%= blogs[i+2].title %></b></span>                        
                                 <p class="blog_content_old" style="display: none;"><%= blogs[i+2].body.substring(0,200)+"..." %></p>
                                 <p class="blog_content_new"></p>
                             </div>
@@ -59,10 +59,10 @@
                     <a class="card-link" href="/blog/<%=blogs[i+3]._id%>" >
                         <div class="card card-three hvr-grow">
                             <div class="card-image">
-                                <img src="<%= blogs[i+3].image %>" style="height: 164px;">
+                                <img src="<%= blogs[i+3].image %>">
                             </div>
                             <div class="card-content">
-                                <span class="card-title"><%= blogs[i+3].title %></span>
+                                <span class="card-title"><b><%= blogs[i+3].title %></b></span>
                                 <p class="blog_content_old" style="display: none;"><%= blogs[i+3].body.substring(0,200)+"..." %></p>
                                 <p class="blog_content_new"></p>
                             </div>
@@ -73,13 +73,13 @@
             <% if(blogs[i+4]!=null){%>
                 <div class="col s12 m6 l6">
                     <a class="card-link" href="/blog/<%=blogs[i+4]._id%>" >
-                        <div class="card  hvr-grow">
+                        <div class="card card-two hvr-grow">
                             <div class="card-image">
-                                <img src="<%= blogs[i+4].image %>"  style="height: 230px;">
+                                <img src="<%= blogs[i+4].image %>">
                             </div>
                             <div class="card-content">
-                                    <span class="card-title"><%= blogs[i+4].title %></span>
-                                <p class="blog_content_old" style="display: none;"><%= blogs[i+4].body.substring(0,250)+"..." %></p>
+                                    <span class="card-title"><b><%= blogs[i+4].title %></b></span>
+                                <p class="blog_content_old" style="display: none;"><%= blogs[i+4].body.substring(0,200)+"..." %></p>
                                 <p class="blog_content_new"></p>
                             </div>
                         </div>
@@ -89,13 +89,13 @@
             <% if(blogs[i+5]!=null){%>
                 <div class="col s12 m6 l6">
                     <a class="card-link" href="/blog/<%=blogs[i+5]._id%>" >
-                        <div class="card  hvr-grow">
+                        <div class="card card-two hvr-grow">
                             <div class="card-image">
-                                <img src="<%= blogs[i+5].image %>" style="max-height: 230px;">
+                                <img src="<%= blogs[i+5].image %>">
                             </div>
                             <div class="card-content">
-                                <span class="card-title"><%= blogs[i+4].title %></span>
-                                <p class="blog_content_old" style="display: none;"><%= blogs[i+5].body.substring(0,250)+"..." %></p>
+                                <span class="card-title"><b><%= blogs[i+4].title %></b></span>
+                                <p class="blog_content_old" style="display: none;"><%= blogs[i+5].body.substring(0,200)+"..." %></p>
                                 <p class="blog_content_new"></p>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
 
 <!-- FLOATING ACTION BUTTON -->
 <div class="fixed-action-btn">
-    <a href="/blog/create"class="btn-floating btn-large red">
+    <a href="/blog/create"class="btn-floating btn-large indigo darken-4">
       <i class="large material-icons">mode_edit</i>
     </a>
 </div>
