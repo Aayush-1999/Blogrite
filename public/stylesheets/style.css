@@ -29,6 +29,25 @@ body{
     height: 220px;
 }
 
+:root {
+    --ck-image-style-spacing: 1.5em;
+}
+
+.ck-content blockquote {
+    overflow: hidden;
+    padding-right: 1.5em;
+    padding-left: 1.5em;
+    margin-left: 0;
+    margin-right: 0;
+    font-style: italic;
+    border-left: solid 5px #1a237e !important ;
+}
+
+.blog-body{
+    font-size: 1.25rem;
+    line-height: 1.7em;
+}
+
  /* label focus color */
 .input-field input[type=text]:focus + label , 
  input[type=email]:focus + label , 

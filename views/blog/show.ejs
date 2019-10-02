@@ -1,16 +1,21 @@
 <% include ../partials/header %>
 
+<div class="section white">
+    <div class="container">
+        <h2 class="header center"><%= blog.title %></h2>
+    </div>
+</div>
+
 <div class="parallax-container">
     <div class="parallax"><img src="<%=blog.image%>"></div>
 </div>
 
 <div class="section white">
-    <div class="row container">
-        <h2 class="header center"><%= blog.title %></h2>
-        <p class="grey-text text-darken-3 lighten-3 ck-content" style="display: none"  id="blog_content_old">                
+    <div class="row container" style="margin-top: 3em;">
+        <p class="grey-text text-darken-3 lighten-3" style="display: none"  id="blog_content_old">                
             <%=blog.body%>
         </p>
-        <p class="grey-text text-darken-3 lighten-3 ck-content" id="blog_content_new">                
+        <p class="ck-content blog-body" id="blog_content_new">                
         </p>
         <hr>
         <div class="row">
