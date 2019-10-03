@@ -19,10 +19,10 @@
         </p>
         <hr>
         <div class="row">
-            <a class="col s8 m10" >Comments</a>
-            <a class="col s2 m1" href="/blog/<%=blog.id%>/edit">Edit</a>
-            <form action="/blog/<%=blog._id%>?_method=DELETE" method="POST" >
-                <button>Delete</button>
+            <a class="col s7 m10 btn-flat" >Comments</a>
+            <a class="col s2 m1  btn-flat" href="/blog/<%=blog.id%>/edit">Edit</a>
+            <form action="/blog/<%=blog._id%>?_method=DELETE" method="POST" class="col s3 m1" >
+                <button class="btn-flat">Delete</button>
             </form>
         </div>
     </div>
