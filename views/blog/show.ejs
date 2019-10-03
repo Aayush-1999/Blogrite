@@ -3,6 +3,16 @@
 <div class="section white">
     <div class="container">
         <h2 class="header center"><%= blog.title %></h2>
+        <%
+            var monthNames = [
+                'January', 'February', 'March','April', 'May', 'June', 'July','August', 'September', 'October',
+                'November', 'December'
+            ];
+            var d = blog.createdAt.getDate();
+            var m = monthNames[blog.createdAt.getMonth()];
+            var y = blog.createdAt.getFullYear();
+        %>
+        <p class="center"><%= d+ ' ' +m+ ' ' +y %></p>
     </div>
 </div>
 
@@ -17,14 +27,33 @@
         </p>
         <p class="ck-content blog-body" id="blog_content_new">                
         </p>
-        <hr>
+        <p>WRITTEN BY : <%= blog.author.name %></p>
+        <br><hr>
         <div class="row">
-            <a class="col s7 m10 btn-flat" >Comments</a>
+            <a class="col s7 m10 btn-flat" >Add Comment</a>
             <a class="col s2 m1  btn-flat" href="/blog/<%=blog.id%>/edit">Edit</a>
             <form action="/blog/<%=blog._id%>?_method=DELETE" method="POST" class="col s3 m1" >
                 <button class="btn-flat">Delete</button>
             </form>
         </div>
+    </div>
+    <div class="mt-3 p-3" style="background:#dcdcdc">
+        <%blog.comments.forEach(function(comment){%>
+        <div class="row">
+            <div class="col-md-12">
+                <strong><%=comment.author.name%></strong>
+                <p>
+                    <%=comment.text%>
+                </p>
+                <!-- <%if(currentUser && comment.author.id.equals(currentUser.id)){%>
+                    <a href="/campground/<%=campground._id%>/comments/<%=comment._id%>/edit" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="/campground/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST" id="delete-button">
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                <%}%> -->
+            </div>
+        </div>
+        <%});%>
     </div>
 </div>
 
