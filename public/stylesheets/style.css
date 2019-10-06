@@ -49,6 +49,10 @@ body{
     margin-bottom: 2.5rem;
 }
 
+.panel {
+    display: none;
+}
+
  /* label focus color */
 .input-field input[type=text]:focus + label , 
  input[type=email]:focus + label , 

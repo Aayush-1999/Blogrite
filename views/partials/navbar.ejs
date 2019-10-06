@@ -5,9 +5,13 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             
             <ul class="right hide-on-med-and-down">
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <% if(!currentUser){ %>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                <% } else { %>
+                    <li><a href="/user/<%=currentUser._id%>"><%= currentUser.displayName %></a></li>
+                    <li><a href="/logout">Logout</a></li>
+                <% } %>
             </ul>
             <form class="search-form"> 
                 <div class="input-field search-input">
