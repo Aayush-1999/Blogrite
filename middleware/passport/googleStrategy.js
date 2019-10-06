@@ -27,7 +27,8 @@ module.exports = passport => {
                      token:accessToken,
                      displayName:profile.displayName,
                      email:profile.emails[0].value,
-                     image:profile.photos[0].value
+                     image:profile.photos[0].value,
+                     provider: "google"
                   });
                   newUser.save(function(err) {
                      if(err) {
