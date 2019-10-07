@@ -41,10 +41,7 @@ router.post("/",upload.single('image'),async function(req,res){
         // add image's public url to the campground object for identifying and deleting image on the cloudinary
         req.body.blog.imageId = result.public_id;
         // add author to campground
-        // req.body.blog.author = {
-        //     id: req.user._id,
-        //     name: req.user.displayName
-        // }
+        req.body.blog.author = req.user._id
         let blog=await Blog.create(req.body.blog);
         // let user = await User.findById(req.user._id).populate('followers').exec();
         // let newNotification = {
@@ -60,7 +57,6 @@ router.post("/",upload.single('image'),async function(req,res){
         console.log("Blog created");
         res.redirect("/blog/"+blog.id);
     } catch(err) {
-        console.log("Blog not created");
         console.log(err);
         // req.flash('error', err.message);
         res.redirect('back');
@@ -80,7 +76,17 @@ router.get("/",(req,res)=>{
 
 //SHOW SINGLE BLOG
 router.get("/:id",(req,res)=>{
-    Blog.findById(req.params.id,(err,blog)=>{
+    Blog.findById(req.params.id).
+        populate({
+            path:"comments",
+            model:"Comment",
+            populate:{
+                path:"author",
+                model:"User"
+            }
+        }).
+        populate("author").
+        exec((err,blog)=>{
         if(err) console.log(err);
         else {
             res.render("blog/show",{blog});
