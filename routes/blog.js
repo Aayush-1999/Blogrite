@@ -1,7 +1,6 @@
 const express        = require("express"),
       router         = express.Router(),
       Blog           = require("../models/blog"),
-      User           = require("../models/user"),
       methodOverride = require("method-override"),
       middleware     = require("../middleware/verify"),
       multer         = require('multer');
@@ -57,7 +56,7 @@ router.post("/" ,middleware.isLoggedIn,upload.single('image'),async function(req
         res.redirect("/blog/"+blog.id);
     } catch(err) {
         console.log(err);
-        // req.flash('error', err.message);
+        req.flash('error', err.message);
         res.redirect('back');
     }
 });
@@ -86,7 +85,11 @@ router.get("/:id",(req,res)=>{
         }).
         populate("author").
         exec((err,blog)=>{
-        if(err) console.log(err);
+        if(err || !blog) {
+            console.log(err);
+            req.flash("error","Blog not found");
+            res.redirect("back");
+        }
         else {
             res.render("blog/show",{blog});
         }
@@ -103,7 +106,10 @@ router.get("/:id/edit",middleware.checkBlogOwnership,(req,res)=>{
 //UPDATE BLOG
 router.put("/:id",middleware.checkBlogOwnership,upload.single('image'),(req,res)=>{
     Blog.findById(req.params.id,async function(err,blog){
-        if(err) console.log(err);
+        if(err){
+            req.flash("error",err.message);
+            res.redirect("back");
+        }
         else{
             if(req.file){
                 try{
@@ -113,14 +119,10 @@ router.put("/:id",middleware.checkBlogOwnership,upload.single('image'),(req,res)
                     blog.imageId=result.public_id;
                 }
                 catch(err){
-                //   req.flash("error",err.message);
+                    req.flash("error",err.message);
                     res.redirect("/campground/"+ req.params.id + "/edit");
                 }
             }    
-            blog.title=req.body.title;
-            blog.body=req.body.body;
-            blog.save();
-            // req.flash("success","Campground Updated successfully")
             res.redirect("/blog/" + req.params.id);
         }
     });
@@ -132,12 +134,11 @@ router.delete("/:id",middleware.checkBlogOwnership,(req,res)=>{
         try{
            await cloudinary.uploader.destroy(blog.imageId); 
            blog.remove();
-        //    req.flash("success","Campground deleted successfully");
            res.redirect("/blog");
         }
         catch(err){
-            console.log(err);
-        //    req.flash("error",err.message);
+           console.log(err);
+           req.flash("error",err.message);
            return res.redirect("back");  
         }
      });

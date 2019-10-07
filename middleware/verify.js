@@ -6,7 +6,7 @@ middlewareObj.checkBlogOwnership=(req,res,next)=>{
     if(req.isAuthenticated()){
        Blog.findById(req.params.id,(err,blog)=>{
           if(err || !blog){
-            //  req.flash("error","Campground not found");
+             req.flash("error","Campground not found");
              res.redirect("back");
           }
           else{
@@ -15,7 +15,7 @@ middlewareObj.checkBlogOwnership=(req,res,next)=>{
              }
              else
              {
-            //    req.flash("You don't have permission to do this");
+               req.flash("error","You don't have permission to do this");
                res.redirect("back");
              }
           }
@@ -23,7 +23,7 @@ middlewareObj.checkBlogOwnership=(req,res,next)=>{
     }
     else
     {
-    //   req.flash("error","You don't have permission to do this");
+      req.flash("error","You don't have permission to do this");
       res.redirect("back");
     }
 }
@@ -32,7 +32,7 @@ middlewareObj.checkCommentOwnership=(req,res,next)=>{
    if(req.isAuthenticated()){
        Comment.findById(req.params.comment_id,(err,comment)=>{
           if(err || !comment){
-            //  req.flash("error","Comment not found");
+             req.flash("error","Comment not found");
              res.redirect("back");
           }
           else{
@@ -41,7 +41,7 @@ middlewareObj.checkCommentOwnership=(req,res,next)=>{
              }
              else
              {
-            //    req.flash("error","You don't have permission to do that");
+               req.flash("error","You don't have permission to do that");
                res.redirect("back");
              }
           }
@@ -56,7 +56,7 @@ middlewareObj.checkCommentOwnership=(req,res,next)=>{
     {
        return next();
     }
-    // req.flash("error","You need to be logged in to do that");
+    req.flash("error","Please login first");
     res.redirect("/login");
  }
 

@@ -2,6 +2,7 @@ const express               = require("express"),
       app                   = express(),
       bodyParser            = require("body-parser"),
       mongoose              = require("mongoose"),
+      flash                 = require("connect-flash"),
       methodOverride        = require("method-override"),
       middleware            = require("./middleware/index");
 
@@ -21,13 +22,14 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname+"/public"));
 app.set("view engine","ejs");
 app.use(methodOverride("_method"));
+app.use(flash());
 
 middleware(app);
 
 app.use((req,res,next)=>{
     res.locals.currentUser = req.user;
-    // res.locals.error  =  req.flash("error");
-    // res.locals.success  =  req.flash("success");
+    res.locals.error  =  req.flash("error");
+    res.locals.success  =  req.flash("success");
     next();
  });
 
