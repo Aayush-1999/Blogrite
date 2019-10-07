@@ -150,6 +150,20 @@ input[type=password]:focus{
     transform: scale(1.03);
   }
 
+  .preloader-background {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #eee;
+	
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;	
+}
+
 /* CHECK and FIX THIS */
 @media only screen and (max-width:499px){
     .form-width,
