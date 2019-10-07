@@ -3,7 +3,7 @@ const express        = require("express"),
       Blog           = require("../models/blog"),
       User           = require("../models/user"),
       methodOverride = require("method-override"),
-      middleware     = require("../middleware"),
+      middleware     = require("../middleware/verify"),
       multer         = require('multer');
 
 const storage = multer.diskStorage({
@@ -28,12 +28,12 @@ cloudinary.config({
 });
 
 //SHOW FORM FOR CREATING NEW BLOG
-router.get("/create",(req,res)=>{
+router.get("/create",middleware.isLoggedIn,(req,res)=>{
     res.render("blog/create");
 });
 
 //CREATING NEW BLOG
-router.post("/",upload.single('image'),async function(req,res){
+router.post("/" ,middleware.isLoggedIn,upload.single('image'),async function(req,res){
     try{
         let result= await cloudinary.uploader.upload(req.file.path)// can also add webpurifier to purify images uploaded on server (for more details see cloudinary addons)
         // add cloudinary url for the image to the campground object under image property
@@ -54,7 +54,6 @@ router.post("/",upload.single('image'),async function(req,res){
         //     follower.save();
         // }
         //redirect back to blogs page
-        console.log("Blog created");
         res.redirect("/blog/"+blog.id);
     } catch(err) {
         console.log(err);
@@ -95,14 +94,14 @@ router.get("/:id",(req,res)=>{
 })
 
 //SHOW FORM FOR UPDATING A BLOG
-router.get("/:id/edit",(req,res)=>{
+router.get("/:id/edit",middleware.checkBlogOwnership,(req,res)=>{
     Blog.findById(req.params.id,(err,blog)=>{
         res.render("blog/edit",{blog});
     });
 })
 
 //UPDATE BLOG
-router.put("/:id",upload.single('image'),(req,res)=>{
+router.put("/:id",middleware.checkBlogOwnership,upload.single('image'),(req,res)=>{
     Blog.findById(req.params.id,async function(err,blog){
         if(err) console.log(err);
         else{
@@ -128,7 +127,7 @@ router.put("/:id",upload.single('image'),(req,res)=>{
 })
 
 //DELETE A BLOG
-router.delete("/:id",(req,res)=>{
+router.delete("/:id",middleware.checkBlogOwnership,(req,res)=>{
     Blog.findById(req.params.id,async function(err,blog){
         try{
            await cloudinary.uploader.destroy(blog.imageId); 

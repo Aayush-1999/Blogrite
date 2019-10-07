@@ -3,10 +3,10 @@ const express        = require("express"),
       Blog           = require("../models/blog"),
       Comment        = require("../models/comment"),
       methodoverride = require("method-override"),
-      middleware     = require("../middleware");
+      middleware     = require("../middleware/verify");
 
 //COMMENT ADD ROUTE
-router.post("/",(req,res)=>{
+router.post("/",middleware.isLoggedIn,(req,res)=>{
     Blog.findById(req.params.id,(err,blog)=>{
         if(err) console.log(err);
         else{
@@ -25,7 +25,7 @@ router.post("/",(req,res)=>{
 })
 
  //DELETE COMMENT
- router.delete("/:comment_id",(req,res)=>{
+ router.delete("/:comment_id",middleware.checkCommentOwnership,(req,res)=>{
      Blog.findById(req.params.id,(err,blog)=>{
         if(err) console.log(err);
         else{
