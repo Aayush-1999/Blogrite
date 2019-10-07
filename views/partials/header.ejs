@@ -42,3 +42,17 @@
         </div> 
 
 <% include ./navbar.ejs %>
+
+        <div class="container">
+            <% if(error && error.length>0) { %>
+                <div class="msg msg-error z-depth-3 scale-transition">
+                    <%= error %>
+                </div>
+
+            <% } 
+                if(success && success.length>0) { %>
+                    <div class="msg msg-info z-depth-3">
+                    <%= success %>
+                </div>
+            <% } %>
+        </div>

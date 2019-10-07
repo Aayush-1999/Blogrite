@@ -144,25 +144,53 @@ input[type=password]:focus{
     transition: all 0.5s ease !important;
     -webkit-transition-property: transform;
     transition-property: transform;
-  }
-  .hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+}
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
     -webkit-transform: scale(1.1);
     transform: scale(1.03);
-  }
-
-  .preloader-background {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: #eee;
-	
-	position: fixed;
-	z-index: 100;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;	
 }
+
+.preloader-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;	
+}
+
+.msg {
+    width:100%;
+    border: 1px solid;
+    padding:10px;
+    margin: 20px;
+    color: grey;
+}
+
+.msg-error {
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+    border-radius: 0.25rem;
+    width: 50%;
+    padding: 12px 20px;
+}
+.msg-info{
+    margin-right: auto;
+    margin-left: auto;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    border-radius: 0.25rem;
+    width: 50%;
+    padding: 12px 20px;
+  }
 
 /* CHECK and FIX THIS */
 @media only screen and (max-width:499px){
