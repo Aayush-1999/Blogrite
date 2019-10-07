@@ -8,8 +8,16 @@ body{
     width: 90%;
 }
 
+.mt-2{
+    margin-top: 1.5rem;
+}
+
 .mt-3{
     margin-top: 3rem;
+}
+
+.text-color{
+    color: #1a237e;
 }
 
 .card-link{
@@ -208,6 +216,15 @@ input[type=password]:focus{
         width: 64% !important;
         max-width: 70% !important;
     }
+    .container.blog{
+        width: 60%;
+    }
+    .ml-1{
+        margin-left: 10px !important;
+    }
+    .mr-2{
+        margin-right: 20px !important;
+    }
 }
 
 @media only screen and (min-width:750px) and (max-width:999px){
@@ -216,6 +233,9 @@ input[type=password]:focus{
     }
     .search-form{
         margin-left: 60px;    
+    }
+    .container.blog{
+        width: 75%;
     }
 }
 
