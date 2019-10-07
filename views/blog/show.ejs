@@ -61,8 +61,10 @@
                     </div>
                 </div>
             </div>
-            <a class="col s2 m1  btn-flat" href="/blog/<%=blog.id%>/edit">Edit</a>
-            <a class="col s2 m1  btn-flat modal-trigger" href="#modal1">Delete</a>
+            <%if(currentUser && blog.author._id.equals(currentUser._id)){%>
+                <a class="col s2 m1  btn-flat" href="/blog/<%=blog.id%>/edit">Edit</a>
+                <a class="col s2 m1  btn-flat modal-trigger" href="#modal1">Delete</a>
+            <% } %>    
         </div>
         <ul class="collection">
             <%blog.comments.forEach(function(comment){%>
@@ -70,9 +72,11 @@
                 <img src="<%= comment.author.image %>" alt="" class="circle">
                 <span class="title text-color "><%=comment.author.displayName%></span>
                 <p><%=comment.text%></p>
-                <form action="/blog/<%=blog._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST" class="secondary-content" >
-                    <button class="btn-flat"><i class="material-icons">delete</i></button>
-                </form>
+                <%if(currentUser && comment.author._id.equals(currentUser._id)){%>
+                    <form action="/blog/<%=blog._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST" class="secondary-content" >
+                        <button class="btn-flat"><i class="material-icons">delete</i></button>
+                    </form>
+                <% } %>
                 </li>
             <%});%>
         </ul>
