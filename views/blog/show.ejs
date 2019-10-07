@@ -21,39 +21,75 @@
 </div>
 
 <div class="section white">
-    <div class="row container" style="margin-top: 3em;">
+    <div class="row container blog" style="margin-top: 3em;">
         <p class="grey-text text-darken-3 lighten-3" style="display: none"  id="blog_content_old">                
             <%=blog.body%>
         </p>
         <p class="ck-content blog-body" id="blog_content_new">                
         </p>
-        <p>WRITTEN BY : <%= blog.author.name %></p>
-        <br><hr>
-        <div class="row">
-            <a class="col s7 m10 btn-flat" >Add Comment</a>
-            <a class="col s2 m1  btn-flat" href="/blog/<%=blog.id%>/edit">Edit</a>
-            <form action="/blog/<%=blog._id%>?_method=DELETE" method="POST" class="col s3 m1" >
-                <button class="btn-flat">Delete</button>
-            </form>
-        </div>
-    </div>
-    <div class="mt-3 p-3" style="background:#dcdcdc">
-        <%blog.comments.forEach(function(comment){%>
-        <div class="row">
-            <div class="col-md-12">
-                <strong><%=comment.author.name%></strong>
-                <p>
-                    <%=comment.text%>
-                </p>
-                <!-- <%if(currentUser && comment.author.id.equals(currentUser.id)){%>
-                    <a href="/campground/<%=campground._id%>/comments/<%=comment._id%>/edit" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="/campground/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST" id="delete-button">
-                        <button class="btn btn-danger btn-sm">Delete</button>
-                    </form>
-                <%}%> -->
+        <div style="border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;">
+            <div class="row mt-2">
+                <div class="col s3 m2 l1">
+                    <img src="<%= blog.author.image %>" alt="" style="height: 4em; width:4em;" class="circle">
+                </div>
+                <div class="col s9 m8 l8 ml-1 mr-2">
+                    <span class="title">WRITTEN BY</span>
+                    <a href="/"><h5 class="text-color" style="margin-top: 5px"><strong><%=blog.author.displayName%></strong></h5></a>
+                </div>
+                <div class="col m2 l2 " style="margin-top: 1rem;">
+                    <button class="waves-effect waves-light btn indigo darken-4">Follow</button>
+                </div>
             </div>
         </div>
-        <%});%>
+        <div class="row mt-2">
+            <div class="col s7 m10"  style="padding-left:0;">
+                <button class="accordion btn-flat">Add Comment</button>
+                <div class="panel">
+                    <div class="row">
+                        <form method="POST" action="/blog/<%= blog._id %>/comment">
+                            <div class="row">
+                                <div class="input-field col s10 m10">
+                                    <textarea id="textarea1" class="materialize-textarea" name="comment[text]" placeholder="Write your comment here"></textarea>
+                                </div>
+                                <div class="input-field col s2 m2">
+                                    <button class="waves-effect waves-light btn indigo darken-4">
+                                        Post
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <a class="col s2 m1  btn-flat" href="/blog/<%=blog.id%>/edit">Edit</a>
+            <a class="col s2 m1  btn-flat modal-trigger" href="#modal1">Delete</a>
+        </div>
+        <ul class="collection">
+            <%blog.comments.forEach(function(comment){%>
+                <li class="collection-item avatar" style="background:rgba(26,35,126,0.05); min-height: 65px;">
+                <img src="<%= comment.author.image %>" alt="" class="circle">
+                <span class="title text-color "><%=comment.author.displayName%></span>
+                <p><%=comment.text%></p>
+                <form action="/blog/<%=blog._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST" class="secondary-content" >
+                    <button class="btn-flat"><i class="material-icons">delete</i></button>
+                </form>
+                </li>
+            <%});%>
+        </ul>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h5>Are you sure you want to delete ?</h5>
+        <p>* This cannot be undone</p>
+    </div>
+    <div class="modal-footer">
+        <form action="/blog/<%=blog._id%>?_method=DELETE" method="POST">
+            <button class="waves-effect waves-light btn indigo darken-4">Yes</button>
+            <a href="#!" class="modal-close waves-effect waves-light btn indigo darken-4">No</a>
+        </form>
     </div>
 </div>
 
