@@ -20,6 +20,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    M.Modal.init(elems,{});
+});
+
+
 //ACCORDIAN
 var acc = document.getElementsByClassName("accordion");
 var i;
