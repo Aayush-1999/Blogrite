@@ -13,16 +13,15 @@
                     <li><a href="/logout">Logout</a></li>
                 <% } %>
             </ul>
-            <form class="search-form"> 
+            <form class="search-form" action="/blog" method="GET" > 
                 <div class="input-field search-input">
-                    <input id="search" type="search" required>
+                    <input id="search" type="search" name="search" required>
                     <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                     <i class="material-icons">close</i>
                 </div>
             </form>
         </div>
     </nav>
-    
     
     <ul class="sidenav" id="mobile-demo">
         <li><a href="/login">Login</a></li>
