@@ -2,8 +2,8 @@ const express      = require("express"),
       router       = express.Router(),
       passport     = require("passport"),
       bcrypt       = require("bcrypt"),
+      async        = require("async"),
       User         = require("../models/user"),
-    //   email        = require("./auth/email"),
       googleAuth   = require("./auth/google"),
       facebookAuth = require("./auth/facebook");
       
@@ -20,8 +20,7 @@ router.get("/register",(req,res)=>{
 //REGISTER LOGIC ROUTE
 router.post("/register",async function(req,res){
     try{
-        let saltRounds=10,hashcode;
-    
+        let saltRounds=10,hashcode;    
         await bcrypt.hash(req.body.password, saltRounds, function(err,hash) {
             hashcode=hash;
         });
@@ -29,21 +28,20 @@ router.post("/register",async function(req,res){
         let user = await User.create({
             firstName:req.body.firstname,
             lastName:req.body.lastname,
-            displayName:req.body.firstName + " " + req.body.lastName,
+            displayName:req.body.firstname + " " + req.body.lastname,
             email:req.body.email,
             password:hashcode
         }); 
-         
         if(user.email==="aayushaggarwal2007@gmail.com")
-        {
-            user.isAdmin=true;
-            user.save();   
-        }
-        console.log(user);
-        res.redirect("/");                    
+            user.isAdmin=true;   
+        user.save(function(err){
+          req.logIn(user,function(err){  
+          res.redirect("/");
+          });  
+        });                  
     }
     catch(err){
-        console.log(err);
+        req.flash("error","This Email is already registered");
         res.redirect("/register");
     }    
 });
@@ -57,7 +55,8 @@ router.get("/login",(req,res)=>{
 router.post("/login",passport.authenticate("local",
     {
        successRedirect:"/",
-       failureRedirect:"/login"
+       failureRedirect:"/login",
+       failureFlash:true
     }),(req,res)=>{
 });
  
@@ -69,10 +68,5 @@ router.get("/logout",(req,res)=>{
 
 googleAuth(router);
 facebookAuth(router);
-
-//FORGOT PASSWORD
-router.get('/forgot',(req, res)=> {
-    res.render("forgot");
-});
 
 module.exports=router;
