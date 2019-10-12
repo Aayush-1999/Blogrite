@@ -64,40 +64,39 @@ router.get("/resetpas/:token",(req, res)=> {
 router.post("/resetpas/:token",(req, res)=> {
     async.waterfall([
         function(done) {
-        User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } },(err, user)=> {
-            if (!user) {
-            req.flash("error", "Password reset token is invalid or has expired.");
-            return res.redirect("back");
-            }
-            else if(req.body.password == req.body.confirm) {    
-            bcrypt.hash(req.body.password,10).then(function(hash) {
-                user.password=hash;
-                user.resetPasswordToken = undefined;
-                user.resetPasswordExpires = undefined;
-                user.save();
-                req.flash("success", "Your password has been changed.");
-                res.redirect("/login");
-                done(err, user);
+            User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } },(err, user)=> {
+                if (!user) {
+                    req.flash("error", "Password reset token is invalid or has expired.");
+                    return res.redirect("back");
+                }
+                else if(req.body.password == req.body.confirm) {    
+                    bcrypt.hash(req.body.password,10).then(function(hash) {
+                        user.password=hash;
+                        user.resetPasswordToken = undefined;
+                        user.resetPasswordExpires = undefined;
+                        user.save();
+                        done(err, user);
+                    });
+                }
+                else {
+                    req.flash("error", "Passwords do not match.");
+                    return res.redirect('back');
+                }
             });
-            }
-            else {
-                req.flash("error", "Passwords do not match.");
-                return res.redirect('back');
-            }
-        });
         },
         function(user, done) {
-        let err=email(user.email,'Your password has been changed',
-            'Hello,\n\n' +
-            'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
-        )
-        req.flash("success","Your password has been changed.");
-        done(err);
+            let err=email(user.email,'Your password has been changed',
+                'Hello,\n\n' +
+                'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+            )
+            req.flash("success","Your password has been changed.");
+            done(err);
         }
     ], function(err) {
-        res.redirect("/");
-    });
+            if(err) return next(err);
+            res.redirect("/login");
+        }
+    );
 });
-
 
 module.exports=router;

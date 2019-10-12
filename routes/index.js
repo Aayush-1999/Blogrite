@@ -2,7 +2,6 @@ const express      = require("express"),
       router       = express.Router(),
       passport     = require("passport"),
       bcrypt       = require("bcrypt"),
-      async        = require("async"),
       User         = require("../models/user"),
       googleAuth   = require("./auth/google"),
       facebookAuth = require("./auth/facebook");
