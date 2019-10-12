@@ -19,6 +19,11 @@
 
 <div class="container-home">
     <section class="mt-3">
+        <div class="center">
+            <% if (noMatch) { %>
+                <h4><%=noMatch%></h4>
+            <% } %>
+        </div>
         <% for(let i=0;i<blogs.length;i+=6){ %>
         <div class="row">
             <% if(blogs[i]!=null){%>
@@ -47,7 +52,7 @@
                                 <img src="<%= blogs[i+1].image %>">
                             </div>
                             <div class="card-content">
-                                <span class="card-title"><b><%= blogs[i+1].title %></b></span>
+                                <span class="card-title center "><b><%= blogs[i+1].title %></b></span>
                                 <p class="blog_content_old" style="display: none;"><%= blogs[i+1].body.substring(0,200)+"..." %></p>
                                 <p class="blog_content_new"></p>
                             </div>
@@ -63,7 +68,7 @@
                                 <img src="<%= blogs[i+2].image %>">
                             </div>
                             <div class="card-content">
-                                <span class="card-title"><b><%= blogs[i+2].title %></b></span>                        
+                                <span class="card-title center"><b><%= blogs[i+2].title %></b></span>                        
                                 <p class="blog_content_old" style="display: none;"><%= blogs[i+2].body.substring(0,200)+"..." %></p>
                                 <p class="blog_content_new"></p>
                             </div>
@@ -79,7 +84,7 @@
                                 <img src="<%= blogs[i+3].image %>">
                             </div>
                             <div class="card-content">
-                                <span class="card-title"><b><%= blogs[i+3].title %></b></span>
+                                <span class="card-title center "><b><%= blogs[i+3].title %></b></span>
                                 <p class="blog_content_old" style="display: none;"><%= blogs[i+3].body.substring(0,200)+"..." %></p>
                                 <p class="blog_content_new"></p>
                             </div>
@@ -95,7 +100,7 @@
                                 <img src="<%= blogs[i+4].image %>">
                             </div>
                             <div class="card-content">
-                                    <span class="card-title"><b><%= blogs[i+4].title %></b></span>
+                                    <span class="card-title center"><b><%= blogs[i+4].title %></b></span>
                                 <p class="blog_content_old" style="display: none;"><%= blogs[i+4].body.substring(0,200)+"..." %></p>
                                 <p class="blog_content_new"></p>
                             </div>
@@ -111,7 +116,7 @@
                                 <img src="<%= blogs[i+5].image %>">
                             </div>
                             <div class="card-content">
-                                <span class="card-title"><b><%= blogs[i+4].title %></b></span>
+                                <span class="card-title center"><b><%= blogs[i+4].title %></b></span>
                                 <p class="blog_content_old" style="display: none;"><%= blogs[i+5].body.substring(0,200)+"..." %></p>
                                 <p class="blog_content_new"></p>
                             </div>

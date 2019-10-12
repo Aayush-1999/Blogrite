@@ -63,13 +63,29 @@ router.post("/" ,middleware.isLoggedIn,upload.single('image'),async function(req
 
 //SHOW ALL BLOGS ON INDEX PAGE
 router.get("/",(req,res)=>{
-    Blog.find({},(err,blogs)=>{
-        if(err) {
-            console.log(err);
+    let noMatch=null;
+    if(req.query.search){
+      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+      Blog.find({title:regex},function(err,foundBlog){
+         if(err){
             res.redirect("back");
-        }
-        else res.render("index",{blogs});
-    });
+         }
+         else{
+            if(foundBlog.length<1){
+               noMatch="No Blogs found. Please try again.";
+            }
+            res.render("index",{blogs:foundBlog,noMatch});
+         }
+      });
+    }
+    else{
+        Blog.find({},(err,blogs)=>{
+            if(err) {
+                res.redirect("back");
+            }
+            else res.render("index",{blogs,noMatch});
+        });
+    }
 })
 
 //SHOW SINGLE BLOG
@@ -120,9 +136,12 @@ router.put("/:id",middleware.checkBlogOwnership,upload.single('image'),(req,res)
                 }
                 catch(err){
                     req.flash("error",err.message);
-                    res.redirect("/campground/"+ req.params.id + "/edit");
+                    res.redirect("/blog/"+ req.params.id + "/edit");
                 }
             }    
+            blog.title=req.body.title;
+            blog.body=req.body.body;
+            blog.save();
             res.redirect("/blog/" + req.params.id);
         }
     });
@@ -143,5 +162,10 @@ router.delete("/:id",middleware.checkBlogOwnership,(req,res)=>{
         }
      });
 })
+
+//FUNCTION FOR ESCAPING SEARCH PARAMETER
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports=router;
