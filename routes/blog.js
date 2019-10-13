@@ -61,7 +61,7 @@ router.post("/" ,middleware.isLoggedIn,upload.single('image'),async function(req
     }
 });
 
-//SHOW ALL BLOGS ON INDEX PAGE
+//SHOW EITHER ALL BLOGS ON INDEX PAGE OR ON THE BASIS OF SEARCH RESULTS
 router.get("/",(req,res)=>{
     let noMatch=null;
     if(req.query.search){
@@ -102,7 +102,6 @@ router.get("/:id",(req,res)=>{
         populate("author").
         exec((err,blog)=>{
         if(err || !blog) {
-            console.log(err);
             req.flash("error","Blog not found");
             res.redirect("back");
         }
@@ -156,7 +155,6 @@ router.delete("/:id",middleware.checkBlogOwnership,(req,res)=>{
            res.redirect("/blog");
         }
         catch(err){
-           console.log(err);
            req.flash("error",err.message);
            return res.redirect("back");  
         }

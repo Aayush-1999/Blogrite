@@ -1,0 +1,52 @@
+<% include ../partials/header %>
+
+<div class="container-home">
+    <div class="row mt-3">
+        <div class="col s12 m3">
+            <div class="card card-user hoverable">
+                <div class="card-image">
+                    <img src="<%=user.image%>">
+                </div>
+                <div class="card-content">
+                    <span class="card-title center"><b><%= user.displayName %></b></span>
+                    <h6 class="center"><p>Number of Blogs : <%= blogs.length %></p></h6>
+                </div>
+                <div class="card-action">
+                    <!-- <a href="/follow/<%= user._id %>"><button class="btn">Follow</button></a> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 col m9 l9">
+            <p class=""><h3 class="center section white" style="margin: 0; padding: 3px;">MY BLOGS</h3></p>            
+            <% for(i=0;i<blogs.length;i++){ %>
+                <a class="card-link" href="/blog/<%=blogs[i]._id%>" >
+                    <div class="card horizontal hvr-grow">
+                        <div class="card-image card-image-horizontal">
+                            <img class="horizontal-card-image" src="<%= blogs[i].image %>">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <span class="card-title center"><b><%= blogs[i].title %></b></span>
+                                <p class="blog_content_old" style="display: none;"><%= blogs[i].body.substring(0,200)+"..." %></p>
+                                <p class="blog_content_new"  style="font-size: 16px;" ></p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            <%}%>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            var blogs_length=<%=blogs.length%>;
+            var blog_body=document.getElementsByClassName("blog_content_old");
+            var blog_body_new=document.getElementsByClassName("blog_content_new");
+            for(i=0;i<blogs_length;i++){
+                blog_body_new[i].innerHTML=blog_body[i].innerText;
+            }
+        })
+    </script>
+
+<% include ../partials/footer %>
