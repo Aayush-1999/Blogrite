@@ -219,9 +219,18 @@ input[type=password]:focus{
     }
     .horizontal-card-image{
         width: 100% !important;
+        height: 137px !important;
     }
     .card.horizontal {
         display: block !important;
+    }
+}
+
+@media only screen and (min-width:414px) and (max-width:599px){
+    .card-user{
+        max-width: 250px !important;
+        margin: 0 auto !important;
+        margin-bottom: 2rem !important;
     }
 }
 
