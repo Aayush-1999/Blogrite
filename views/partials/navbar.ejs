@@ -24,8 +24,11 @@
     </nav>
     
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
-        <li><a href="collapsible.html">Javascript</a></li>
-        <li><a href="mobile.html">Mobile</a></li>
+        <% if(!currentUser){ %>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+        <% } else { %>
+            <li><a href="/user/<%=currentUser._id%>"><%= currentUser.displayName %></a></li>
+            <li><a href="/logout">Logout</a></li>
+        <% } %>
     </ul>
