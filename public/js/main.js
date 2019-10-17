@@ -26,6 +26,15 @@ document.addEventListener("DOMContentLoaded", function(){
 	$('.preloader-wrapper').delay(1000).fadeOut();
 });
 
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then((reg) => {
+            console.log('Service worker registered.', reg);
+            });
+    });
+}
+
 //ACCORDIAN
 var acc = document.getElementsByClassName("accordion");
 var i;
