@@ -17,7 +17,7 @@
 </div>
 
 <div class="parallax-container">
-    <div class="parallax"><img src="<%=blog.image%>"></div>
+    <div class="parallax"><img src="<%=blog.image%>" alt="blogImage"></div>
 </div>
 
 <div class="section white">
@@ -30,7 +30,7 @@
         <div style="border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;">
             <div class="row mt-2">
                 <div class="col s3 m2 l1">
-                    <img src="<%= blog.author.image %>" alt="" style="height: 4em; width:4em;" class="circle">
+                    <img src="<%= blog.author.image %>" alt="blog-authorImage" style="height: 4em; width:4em;" class="circle">
                 </div>
                 <div class="col s9 m8 l8 ml-1 mr-2">
                     <span class="title">WRITTEN BY</span>
@@ -69,7 +69,7 @@
         <ul class="collection">
             <%blog.comments.forEach(function(comment){%>
                 <li class="collection-item avatar" style="background:rgba(26,35,126,0.05); min-height: 65px;">
-                <img src="<%= comment.author.image %>" alt="" class="circle">
+                <img src="<%= comment.author.image %>" alt="blogComment-userImage" class="circle">
                 <span class="title text-color "><%=comment.author.displayName%></span>
                 <p><%=comment.text%></p>
                 <%if(currentUser && comment.author._id.equals(currentUser._id)){%>

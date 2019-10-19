@@ -244,6 +244,9 @@ input[type=password]:focus{
     .blog-body{
         padding: 0 20px;
     }
+    .form-width{
+        width:65% !important;
+    }
 }
 
 @media only screen and (min-width: 700px){

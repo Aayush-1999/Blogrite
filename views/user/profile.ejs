@@ -5,15 +5,15 @@
         <div class="col s12 m3">
             <div class="card card-user hoverable">
                 <div class="card-image">
-                    <img src="<%=user.image%>">
+                    <img src="<%=user.image%>" alt="user-image">
                 </div>
                 <div class="card-content">
                     <span class="card-title center"><b><%= user.displayName %></b></span>
                     <h6 class="center"><p>Number of Blogs : <%= blogs.length %></p></h6>
                 </div>
-                <!-- <div class="card-action">
+                <div class="card-action">
                     <a href="/follow/<%= user._id %>"><button class="btn">Follow</button></a>
-                </div> -->
+                </div>
             </div>
         </div>
 
@@ -23,7 +23,7 @@
                 <a class="card-link" href="/blog/<%=blogs[i]._id%>" >
                     <div class="card horizontal hvr-grow">
                         <div class="card-image card-image-horizontal">
-                            <img class="horizontal-card-image" src="<%= blogs[i].image %>">
+                            <img class="horizontal-card-image" src="<%= blogs[i].image %>" alt="my-blog-image" >
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
