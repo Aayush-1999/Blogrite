@@ -11,8 +11,10 @@
                 <% } else { %>
                     <li>
                         <a class="dropdown-trigger" href="#" data-target="dropdown1">
-                            Notifications 
-                            <span class="new badge"><%= notifications.length %></span>
+                            Notifications
+                            <% if (notifications.length>0) {%> 
+                                <span class="new badge"><%= notifications.length %></span>
+                            <% }%>
                         </a>
                         <ul id="dropdown1" class="dropdown-content" >
                             <% notifications.forEach(function(notification) { %>                          

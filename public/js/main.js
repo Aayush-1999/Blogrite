@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
-    var instance=M.Dropdown.init(elems,{
+    M.Dropdown.init(elems,{
         coverTrigger:false,
         constrainWidth:false
     });
