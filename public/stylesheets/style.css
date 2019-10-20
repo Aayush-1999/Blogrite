@@ -125,11 +125,11 @@ input[type=password]:focus{
 
 .search-input{
     max-width: 450pt;
-    max-width: calc(100% - 350px);
+    max-width: calc(100% - 450px);
 }
 
 .search-form{
-    margin-left: 300px;
+    margin-left: 275px;
 }
 
 /* Grow */
@@ -191,6 +191,12 @@ input[type=password]:focus{
     width: 50%;
     padding: 12px 20px;
   }
+
+.badge.new{
+    color: #1a237e !important;
+    font-weight: bold !important;
+    background-color: white !important;
+}
 
 /* CHECK and FIX THIS */
 @media only screen and (max-width:499px){
