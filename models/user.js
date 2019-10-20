@@ -36,7 +36,19 @@ const UserSchema=new mongoose.Schema({
         type:String,
         required:true,
         default:"local"
-    }    
+    },
+    notifications: [
+    	{
+    	   type: mongoose.Schema.Types.ObjectId,
+    	   ref: 'Notification'
+    	}
+    ]
+    // ,followers: [
+    // 	{
+    // 		type: mongoose.Schema.Types.ObjectId,
+    // 		ref: 'User'
+    // 	}
+    // ]    
 })
 
 module.exports=mongoose.model("User",UserSchema);

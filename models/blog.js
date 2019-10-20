@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 
 const blogSchema = new mongoose.Schema([{
-    title:String,
+    title:{
+        type:String,
+        unique:true,
+        required:true
+    },
     image:String,
     imageId:String,
     body:String,
