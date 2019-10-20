@@ -8,7 +8,7 @@ This is a **Blogging Web App** where you can:
 - Write blogs
 - Comment on Blogs
 
-This web app is also PWA enabled.
+This web app is also **PWA** enabled.
 
 ### SERVER
 
@@ -46,6 +46,7 @@ Many security precautions have been taken:
 ### MISC
 
 `nodemailer` has been used for sending emails (Reset Password Link) to the users.
+<br/>
 `multer` has been used for uploading images and `cloudinary` for storing images.
 
 ### Express Security
