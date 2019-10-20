@@ -5,7 +5,7 @@
 		<h2 class="header center text-color" style="margin-top: 0.85rem;">Notifications</h2>
 		<div class="collection" >
 			<% allNotifications.forEach(function(notification) { %>
-			<a href="/blogs/<%= notification.blogId %>" class="collection-item">
+			<a href="/blog/<%= notification.blogId %>" class="collection-item">
 				<h6 style="color: black;"><%= notification.username %> commented on <%= notification.blog %></h6>
 			</a>
 			<% }); %>
