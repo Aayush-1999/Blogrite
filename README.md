@@ -6,8 +6,9 @@
 This is a **Blogging Web App** where you can:
 - Read blogs
 - Write blogs
-- Like and Share blogs
-- Follow bloggers
+- Comment on Blogs
+
+This web app is also PWA enabled.
 
 ### SERVER
 
@@ -44,8 +45,8 @@ Many security precautions have been taken:
 
 ### MISC
 
-`nodemailer` has been used for sending emails(verification emails) to the users.
-
+`nodemailer` has been used for sending emails (Reset Password Link) to the users.
+`multer` has been used for uploading images and `cloudinary` for storing images.
 
 ### Express Security
 
@@ -63,12 +64,6 @@ this will return an express middleware which can be used on any route, router or
 - **npm install** - installs all the dependencies
 - **npm start** - lints the server and client script, starts eslint on watch mode on server scripts and starts the project at localhost:1998 in debug mode.
 - **npm run start-w** - Restarts the server(using nodemon) on every save and lints the server and client side scripts on each save.
-- **npm run start-w-lite** - Simply restarts the server(using nodemon) on every save.
-- **npm run lint-server** - lints the server scripts (all scripts except that in node_module and public directory) once.
-- **npm run lint-client** - lints the client scripts (all scripts in the public directory) once.
-- **npm run lint-w** - starts the linter in watch mode. When called from root directory it watches the server scripts and when called in public directory it watches the client scripts.
-- **npm run localTunnel** - exposes localhost:1998 to the world wide web
-- **npm run lt** - runs npm start and npm run localTunnel in parallel
 - **Use npm run** --silent <your-script> to hide the internal logs from your terminal window.
 
 
