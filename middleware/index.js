@@ -2,7 +2,8 @@ const express       = require("express");
       path          = require("path"),
       flash         = require("connect-flash"),
       compression   = require("compression"),  
-      passportSetup = require("./passport/setup");
+      passportSetup = require("./passport/setup"),
+      User          = require("../models/user");
 
 module.exports = app => {
 
@@ -20,10 +21,22 @@ module.exports = app => {
     passportSetup(app);
     
     app.use(flash());
-    app.use((req,res,next)=>{
+    app.use(async function(req,res,next){
         res.locals.currentUser = req.user;
         res.locals.error  =  req.flash("error");
         res.locals.success  =  req.flash("success");
+        
+        if(req.user) {
+            try {
+              let user = await User.findById(req.user._id).populate('notifications', null, { isRead: false }).exec();
+              //saving user's notifications to local variable notification
+              res.locals.notifications = user.notifications.reverse();
+            } catch(err) {
+              console.log(err.message);
+              res.redirect("/");
+            }
+        }
+
         next();
      });
 
