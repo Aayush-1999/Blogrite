@@ -21,9 +21,17 @@ document.addEventListener('DOMContentLoaded', function() {
     M.Modal.init(elems,{});
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instance=M.Dropdown.init(elems,{
+        coverTrigger:false,
+        constrainWidth:false
+    });
+});
+
 document.addEventListener("DOMContentLoaded", function(){
-	$('.preloader-background').delay(1000).fadeOut('slow');
-	$('.preloader-wrapper').delay(1000).fadeOut();
+	$('.preloader-background').delay(750).fadeOut('slow');
+	$('.preloader-wrapper').delay(750).fadeOut();
 });
 
 if ('serviceWorker' in navigator) {
