@@ -3,28 +3,7 @@ const express        = require("express"),
       Blog           = require("../models/blog"),
       methodOverride = require("method-override"),
       middleware     = require("../middleware/verify"),
-      multer         = require('multer');
-
-const storage = multer.diskStorage({
-  filename: function(req, file, callback) {
-    callback(null, Date.now() + file.originalname);
-  }
-});
-const imageFilter = function (req, file, cb) {
-    // accept image files only
-    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
-        return cb(new Error('Only image files are allowed!'), false);
-    }
-    cb(null, true);
-};
-const upload = multer({ storage: storage, fileFilter: imageFilter})
-
-const cloudinary = require("cloudinary").v2;
-cloudinary.config({ 
-  cloud_name: 'image-storage', 
-  api_key: process.env.CLOUDINARY_API_KEY, 
-  api_secret: process.env.CLOUDINARY_API_SECRET
-});
+      {cloudinary,upload} = require("../utils/cloudinary");
 
 //SHOW FORM FOR CREATING NEW BLOG
 router.get("/create",middleware.isLoggedIn,(req,res)=>{
@@ -111,7 +90,6 @@ router.get("/:id/edit",middleware.checkBlogOwnership,(req,res)=>{
 router.put("/:id",middleware.checkBlogOwnership,upload.single('image'),(req,res)=>{
     Blog.findById(req.params.id,async function(err,blog){
         if(err){
-            req.flash("error",err.message);
             res.redirect("back");
         }
         else{
@@ -123,7 +101,6 @@ router.put("/:id",middleware.checkBlogOwnership,upload.single('image'),(req,res)
                     blog.imageId=result.public_id;
                 }
                 catch(err){
-                    req.flash("error",err.message);
                     res.redirect("/blog/"+ req.params.id + "/edit");
                 }
             }    
@@ -144,7 +121,6 @@ router.delete("/:id",middleware.checkBlogOwnership,(req,res)=>{
            res.redirect("/blog");
         }
         catch(err){
-           req.flash("error",err.message);
            return res.redirect("back");  
         }
      });

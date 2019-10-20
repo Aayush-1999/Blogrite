@@ -33,11 +33,9 @@ router.post("/register",async function(req,res){
         }); 
         if(user.email==="aayushaggarwal2007@gmail.com")
             user.isAdmin=true;   
-        user.save(function(err){
-          req.logIn(user,function(err){  
-          res.redirect("/");
-          });  
-        });                  
+        let user=await user.save();
+        await req.logIn(user);  
+        res.redirect("/");                  
     }
     catch(err){
         req.flash("error","This Email is already registered");
@@ -51,12 +49,11 @@ router.get("/login",(req,res)=>{
 });
 
 //LOCAL LOGIN LOGIC ROUTE
-router.post("/login",passport.authenticate("local",
-    {
-       successRedirect:"/",
-       failureRedirect:"/login",
-       failureFlash:true
+router.post("/login",passport.authenticate("local",{ 
+        failureRedirect:"/login",
+        failureFlash:"Invalid email or password"
     }),(req,res)=>{
+        res.redirect("/");
 });
  
 //LOGOUT ROUTE

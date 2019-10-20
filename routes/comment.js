@@ -7,24 +7,6 @@ const express        = require("express"),
       middleware     = require("../middleware/verify");
 
 //COMMENT ADD ROUTE
-// router.post("/",middleware.isLoggedIn,(req,res)=>{
-//     Blog.findById(req.params.id,(err,blog)=>{
-//         if(err) console.log(err);
-//         else{
-//             Comment.create(req.body.comment,(err,comment)=>{
-//                 if(err) console.log(err);
-//                 else{
-//                     comment.author=req.user._id;
-//                     comment.save();
-//                     blog.comments.push(comment);
-//                     blog.save();
-//                     res.redirect("/blog/"+blog._id);
-//                 }  
-//             });
-//         }
-//     });
-// })
-
 router.post("/",middleware.isLoggedIn,async function(req,res){
     try{
         let blog= await Blog.findById(req.params.id);
