@@ -11,14 +11,14 @@
                     <span class="card-title center"><b><%= user.displayName %></b></span>
                     <h6 class="center"><p>Number of Blogs : <%= blogs.length %></p></h6>
                 </div>
-                <div class="card-action">
+                <!-- <div class="card-action">
                     <a href="/follow/<%= user._id %>"><button class="btn">Follow</button></a>
-                </div>
+                </div> -->
             </div>
         </div>
 
         <div class="col s12 col m9 l9">
-            <p class=""><h3 class="center section white" style="margin: 0; padding: 3px;">MY BLOGS</h3></p>            
+            <p><h3 class="center section white text-color" style="margin: 0; padding: 3px;">MY BLOGS</h3></p>            
             <% for(i=0;i<blogs.length;i++){ %>
                 <a class="card-link" href="/blog/<%=blogs[i]._id%>" >
                     <div class="card horizontal hvr-grow">

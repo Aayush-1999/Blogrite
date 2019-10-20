@@ -9,6 +9,25 @@
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Register</a></li>
                 <% } else { %>
+                    <li>
+                        <a class="dropdown-trigger" href="#" data-target="dropdown1">
+                            Notifications 
+                            <span class="new badge"><%= notifications.length %></span>
+                        </a>
+                        <ul id="dropdown1" class="dropdown-content" >
+                            <% notifications.forEach(function(notification) { %>                          
+                                <li style="width: 200px;">
+                                    <a href="/notification/<%= notification._id %>">
+                                        <%= notification.username %> commented on <%= notification.blog %> %> 
+                                    </a>
+                                </li>
+                                <li class="divider" tabindex="-1"></li>
+                            <% }); %>
+                            <li >
+                                <a href="/notification">View past notifications</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li><a href="/user/<%=currentUser._id%>"><%= currentUser.displayName %></a></li>
                     <li><a href="/logout">Logout</a></li>
                 <% } %>
@@ -26,9 +45,17 @@
     <ul class="sidenav" id="mobile-demo">
         <% if(!currentUser){ %>
             <li><a href="/login">Login</a></li>
+            <li class="divider" tabindex="-1"></li>
             <li><a href="/register">Register</a></li>
         <% } else { %>
             <li><a href="/user/<%=currentUser._id%>"><%= currentUser.displayName %></a></li>
+            <li class="divider" tabindex="-1"></li>
+            <li><a href="/notification">
+                    Notifications
+                    <span class="new badge"><%= notifications.length %></span>
+                </a>
+            </li>
+            <li class="divider" tabindex="-1"></li>
             <li><a href="/logout">Logout</a></li>
         <% } %>
     </ul>

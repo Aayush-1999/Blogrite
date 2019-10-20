@@ -2,7 +2,7 @@
 
 <div class="section white">
     <div class="container">
-        <h2 class="header center"><%= blog.title %></h2>
+        <h2 class="header center text-color"><%= blog.title %></h2>
         <%
             var monthNames = [
                 'January', 'February', 'March','April', 'May', 'June', 'July','August', 'September', 'October',
@@ -70,7 +70,7 @@
             <%blog.comments.forEach(function(comment){%>
                 <li class="collection-item avatar" style="background:rgba(26,35,126,0.05); min-height: 65px;">
                 <img src="<%= comment.author.image %>" alt="blogComment-userImage" class="circle">
-                <span class="title text-color "><%=comment.author.displayName%></span>
+                <a href="/user/<%= comment.author._id %>"><span class="title text-color "><%=comment.author.displayName%></span></a>
                 <p><%=comment.text%></p>
                 <%if(currentUser && comment.author._id.equals(currentUser._id)){%>
                     <form action="/blog/<%=blog._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST" class="secondary-content" >
