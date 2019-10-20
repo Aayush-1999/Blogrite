@@ -2,26 +2,51 @@ const express        = require("express"),
       router         = express.Router({mergeParams:true}),
       Blog           = require("../models/blog"),
       Comment        = require("../models/comment"),
+      User           = require("../models/user"),
       methodoverride = require("method-override"),
       middleware     = require("../middleware/verify");
 
 //COMMENT ADD ROUTE
-router.post("/",middleware.isLoggedIn,(req,res)=>{
-    Blog.findById(req.params.id,(err,blog)=>{
-        if(err) console.log(err);
-        else{
-            Comment.create(req.body.comment,(err,comment)=>{
-                if(err) console.log(err);
-                else{
-                    comment.author=req.user._id;
-                    comment.save();
-                    blog.comments.push(comment);
-                    blog.save();
-                    res.redirect("/blog/"+blog._id);
-                }  
-            });
+// router.post("/",middleware.isLoggedIn,(req,res)=>{
+//     Blog.findById(req.params.id,(err,blog)=>{
+//         if(err) console.log(err);
+//         else{
+//             Comment.create(req.body.comment,(err,comment)=>{
+//                 if(err) console.log(err);
+//                 else{
+//                     comment.author=req.user._id;
+//                     comment.save();
+//                     blog.comments.push(comment);
+//                     blog.save();
+//                     res.redirect("/blog/"+blog._id);
+//                 }  
+//             });
+//         }
+//     });
+// })
+
+router.post("/",middleware.isLoggedIn,async function(req,res){
+    try{
+        let blog= await Blog.findById(req.params.id);
+        let comment= await Comment.create(req.body.comment);
+        comment.author=req.user._id;
+        comment.save();
+        blog.comments.push(comment);
+        blog.save();
+        let newNotification = {
+            username: req.user.displayName,
+            blog: blog.title,
+            blogId:blog.id
         }
-    });
+        let notification = await Notification.create(newNotification);
+        let author=await User.findById(blog.author);
+        author.notifications.push(notification);
+        author.save();
+        res.redirect("/blog/"+blog._id);
+    }
+    catch(err){
+        res.redirect("back");
+    }
 })
 
  //DELETE COMMENT

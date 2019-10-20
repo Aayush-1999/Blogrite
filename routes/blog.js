@@ -42,20 +42,9 @@ router.post("/" ,middleware.isLoggedIn,upload.single('image'),async function(req
         // add author to campground
         req.body.blog.author = req.user._id
         let blog=await Blog.create(req.body.blog);
-        // let user = await User.findById(req.user._id).populate('followers').exec();
-        // let newNotification = {
-        //     username: req.user.username,
-        //     campgroundId: blog.id
-        // }
-        // for(const follower of user.followers) {
-        //     let notification = await Notification.create(newNotification);
-        //     follower.notifications.push(notification);
-        //     follower.save();
-        // }
         //redirect back to blogs page
         res.redirect("/blog/"+blog.id);
     } catch(err) {
-        console.log(err);
         req.flash('error', err.message);
         res.redirect('back');
     }
