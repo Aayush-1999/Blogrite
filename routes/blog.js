@@ -30,29 +30,24 @@ router.post("/" ,middleware.isLoggedIn,upload.single('image'),async function(req
 });
 
 //SHOW EITHER ALL BLOGS ON INDEX PAGE OR ON THE BASIS OF SEARCH RESULTS
-router.get("/",(req,res)=>{
+router.get("/",async function(req,res){
     let noMatch=null;
-    if(req.query.search){
-      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-      Blog.find({title:regex},function(err,foundBlog){
-         if(err){
-            res.redirect("back");
-         }
-         else{
+    try{
+        if(req.query.search){
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        blogs= await Blog.find({title:regex})
             if(foundBlog.length<1){
-               noMatch="No Blogs found. Please try again.";
+                noMatch="No Blogs found. Please try again.";
             }
-            res.render("index",{blogs:foundBlog,noMatch});
-         }
-      });
+            res.render("index",{blogs,noMatch});
+        } 
+        else{
+            blogs = await Blog.find().sort("-_id").exec();
+            res.render("index",{blogs,noMatch});
+        }
     }
-    else{
-        Blog.find({},(err,blogs)=>{
-            if(err) {
-                res.redirect("back");
-            }
-            else res.render("index",{blogs,noMatch});
-        });
+    catch(err){
+        res.redirect("back");
     }
 })
 
