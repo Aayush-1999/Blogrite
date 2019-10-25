@@ -31,13 +31,16 @@ router.post("/register",async function(req,res){
             email:req.body.email,
             password:hashcode
         }); 
-        if(user.email==="aayushaggarwal2007@gmail.com")
+        if(user.email==="aayushaggarwal2007@gmail.com"){
             user.isAdmin=true;   
-        let user=await user.save();
-        await req.logIn(user);  
-        res.redirect("/");                  
+            user.save();
+        }
+        req.logIn(user,function(err){  
+            res.redirect("/");
+        });                   
     }
     catch(err){
+        console.log(err);
         req.flash("error","This Email is already registered");
         res.redirect("/register");
     }    
