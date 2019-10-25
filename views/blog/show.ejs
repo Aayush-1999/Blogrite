@@ -67,18 +67,20 @@
             <% } %>    
         </div>
         <ul class="collection">
-            <%blog.comments.forEach(function(comment){%>
-                <li class="collection-item avatar" style="background:rgba(26,35,126,0.05); min-height: 65px;">
-                <img src="<%= comment.author.image %>" alt="blogComment-userImage" class="circle">
-                <a href="/user/<%= comment.author._id %>"><span class="title text-color "><%=comment.author.displayName%></span></a>
-                <p><%=comment.text%></p>
-                <%if(currentUser && comment.author._id.equals(currentUser._id)){%>
-                    <form action="/blog/<%=blog._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST" class="secondary-content" >
-                        <button class="btn-flat"><i class="material-icons">delete</i></button>
-                    </form>
-                <% } %>
-                </li>
-            <%});%>
+            <% if(blogs.comments){
+                blog.comments.forEach(function(comment){%>
+                    <li class="collection-item avatar" style="background:rgba(26,35,126,0.05); min-height: 65px;">
+                    <img src="<%= comment.author.image %>" alt="blogComment-userImage" class="circle">
+                    <a href="/user/<%= comment.author._id %>"><span class="title text-color "><%=comment.author.displayName%></span></a>
+                    <p><%=comment.text%></p>
+                    <%if(currentUser && comment.author._id.equals(currentUser._id)){%>
+                        <form action="/blog/<%=blog._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST" class="secondary-content" >
+                            <button class="btn-flat"><i class="material-icons">delete</i></button>
+                        </form>
+                    <% } %>
+                    </li>
+                <%});
+            } %>
         </ul>
     </div>
 </div>
