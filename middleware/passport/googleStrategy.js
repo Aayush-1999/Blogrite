@@ -18,10 +18,10 @@ module.exports = passport => {
                if(err) {
                   return done(err);
                }
-               if(user){
+               else if(user.provider=="google"){
                   return done(null, user);
                } 
-               else{
+               else if(!user){
                   var newUser = new User({
                      id:profile.id,
                      token:accessToken,
@@ -38,6 +38,9 @@ module.exports = passport => {
                         done(null, newUser);
                      }
                   });
+               }
+               else{
+                  return done(null,false,{ message: `This email id is already registered with ${user.provider}`});
                }
             });
          });

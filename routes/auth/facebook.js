@@ -7,7 +7,8 @@ module.exports=router=>{
     router.get('/auth/facebook/callback',passport.authenticate('facebook', 
         { 
             successRedirect: '/',
-            failureRedirect: '/login' 
+            failureRedirect: '/login',
+            failureFlash:true    
         })
     );
 }

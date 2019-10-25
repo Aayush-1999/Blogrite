@@ -20,16 +20,14 @@ router.get("/register",(req,res)=>{
 router.post("/register",async function(req,res){
     try{
         let saltRounds=10,hashcode;    
-        await bcrypt.hash(req.body.password, saltRounds, function(err,hash) {
-            hashcode=hash;
-        });
-
+        hashcode = await bcrypt.hash(req.body.password, saltRounds)
         let user = await User.create({
             firstName:req.body.firstname,
             lastName:req.body.lastname,
             displayName:req.body.firstname + " " + req.body.lastname,
             email:req.body.email,
-            password:hashcode
+            password:hashcode,
+            image:"https://res.cloudinary.com/image-storage/image/upload/v1572009434/blank-avatar_opbhgx.png"
         }); 
         if(user.email==="aayushaggarwal2007@gmail.com"){
             user.isAdmin=true;   

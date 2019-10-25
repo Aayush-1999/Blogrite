@@ -16,11 +16,11 @@ module.exports=passport=>{
                if(err) {
                   return done(err);
                }
-               if(user){
+               else if(user.provider=="facebook"){
                   return done(null, user);
                } 
-               else{
-                  var newUser = new User({
+               else if(!user){
+                  let newUser = new User({
                      id:profile.id,
                      token:accessToken,
                      firstName:profile.name.givenName,
@@ -38,6 +38,9 @@ module.exports=passport=>{
                         done(null, newUser);
                      }
                   });
+               }
+               else{
+                  return done(null,false,{ message: `This email id is already registered with ${user.provider}`});
                }
             });
          });

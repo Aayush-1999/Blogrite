@@ -14,6 +14,12 @@ module.exports = passport =>{
             if (!user) {
               return done(null, false, { message: 'Email not registered' });
             }
+
+            if (user.provider !== 'local') {
+              return done(null, false, {
+                message: `The email is registered with, ${user.provider}`,
+              });
+            }
             
             bcrypt.compare(password, user.password,(err, result)=>{
               if(err) return done(err);
