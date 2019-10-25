@@ -217,6 +217,16 @@ input[type=password]:focus{
     .blog-body{
         padding: 0 20px;
     }
+    .horizontal-card-image,
+    .card-image img{
+        height: 137px !important;
+    }
+
+    .card.horizontal,
+    .card-three,
+    .card-two{
+        height: 400px !important;
+    }
 }
 
 @media only screen and (max-width:699px){
