@@ -40,7 +40,6 @@ router.post("/register",async function(req,res){
         });                   
     }
     catch(err){
-        console.log(err);
         req.flash("error","This Email is already registered");
         res.redirect("/register");
     }    
