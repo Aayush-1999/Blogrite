@@ -14,8 +14,6 @@ and user can:
 - Comment on Blogs
 - Search for a blog
 
-This web app is also .
-
 ### SERVER
 
 The Server is made on `Node.js (v10.15.3)`
