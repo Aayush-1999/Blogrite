@@ -3,12 +3,18 @@
 <a><img alt="David" src="https://img.shields.io/david/Aayush-1999/Blogrite?label=dependencies"></a>
 <a><img alt="Code Quality" src="https://img.shields.io/badge/code%20quality-A-brightgreen"></a>
 
-This is a **Blogging Web App** where you can:
+This is a **PWA** enabled **Blogging Web App** which provides complete Authentication and Registeration of all users with:
+- Google
+- Facebook
+- Local Email
+
+and user can:
 - Read blogs
 - Write blogs
 - Comment on Blogs
+- Search for a blog
 
-This web app is also **PWA** enabled.
+This web app is also .
 
 ### SERVER
 
