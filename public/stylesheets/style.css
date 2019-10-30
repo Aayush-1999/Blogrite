@@ -114,11 +114,6 @@ input[type=password]:focus{
     margin-top: 15px;
 }
 
-/* NAV BAR */
-.brand-logo{
-    margin-left: 15px;
-}
-
 .btn-large{
     width: 100%;
 }
@@ -212,7 +207,7 @@ input[type=password]:focus{
     }
 
     .search-input{
-        max-width: 160pt;
+        max-width: calc(100% - 60px);
     }
     .blog-body{
         padding: 0 20px;
@@ -294,6 +289,10 @@ input[type=password]:focus{
     }
     .mr-2{
         margin-right: 20px !important;
+    }
+    /* NAV BAR */
+    .brand-logo{
+        margin-left: 15px;
     }
 }
 
