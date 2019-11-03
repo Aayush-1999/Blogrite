@@ -1,7 +1,10 @@
 # BlogRite
 
-<a><img alt="David" src="https://img.shields.io/david/Aayush-1999/Blogrite?label=dependencies"></a>
 <a><img alt="Code Quality" src="https://img.shields.io/badge/code%20quality-A-brightgreen"></a>
+<a><img alt="Dependanices upto date" src="https://img.shields.io/david/Aayush-1999/Blogrite?label=dependencies"></a>
+<a><img alt="GNU-v3" src="https://img.shields.io/badge/License-GPLv3-blue.svg"></a>
+<a><img alt="Code Size" src="https://img.shields.io/badge/code%20size-110%20kB-orange"></a>
+<a><img alt="Website Up" src="https://img.shields.io/website-up-down-green-red/http/shields.io.svg"></a>
 
 This is a **PWA** enabled **Blogging Web App** which provides complete Authentication and Registeration of all users with:
 - Google
@@ -39,7 +42,6 @@ Many security precautions have been taken:
 - ***bcrypt***: For secure password saving in the database.
 - ***csurf***: For protection against CSRF attack on Forms and fetch requests.
 - ***helmet***: For protection against common Security Vulnerabilities inExpress framework.
-- ***jsonwebtoken(JWT)***: For Secure Email Verification Links.
 - ***Content Security Policy***: For Secure Content Delivery from the server.
 - ***limiter***: For Limiting the access to data from a particular client (150 requests per hour).
 

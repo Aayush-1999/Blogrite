@@ -36,7 +36,6 @@ module.exports = app => {
               res.redirect("/");
             }
         }
-
         next();
      });
 
