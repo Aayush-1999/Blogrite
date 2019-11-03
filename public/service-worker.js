@@ -1,7 +1,7 @@
 'use strict';
 
-const CACHE_NAME = 'static-cache-v7';
-const DATA_CACHE_NAME = 'data-cache-v6';
+const CACHE_NAME = 'static-cache-v1';
+const DATA_CACHE_NAME = 'data-cache-v1';
 
 const FILES_TO_CACHE = [
    '/',
@@ -16,7 +16,6 @@ const FILES_TO_CACHE = [
    '/images/google-icon.svg',
    '/js/main.js',
    '/js/single-blog.js',
-   '/js/index.js',
    '/stylesheets/style.css',
    '/css/materialize.min.css',
    '/js/materialize.min.js',
