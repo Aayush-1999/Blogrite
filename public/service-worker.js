@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'static-cache-v6';
+const CACHE_NAME = 'static-cache-v7';
 const DATA_CACHE_NAME = 'data-cache-v6';
 
 const FILES_TO_CACHE = [
