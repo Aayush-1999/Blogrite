@@ -1,12 +1,6 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
     M.Sidenav.init(elems,{});
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.parallax');
-    M.Parallax.init(elems, {});
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,11 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
         hoverEnabled: false
     });
   });
-
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    M.Modal.init(elems,{});
-});
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
@@ -39,20 +28,5 @@ if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/service-worker.js')
             .then((reg) => {
             });
-    });
-}
-
-//ACCORDIAN
-var acc = document.getElementsByClassName("accordion");
-var i;
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
     });
 }
