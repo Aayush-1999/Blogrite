@@ -6,16 +6,16 @@
 <a><img alt="Code Size" src="https://img.shields.io/badge/code%20size-110%20kB-orange"></a>
 <a><img alt="Website Up" src="https://img.shields.io/website-up-down-green-red/http/shields.io.svg"></a>
 
-This is a **PWA** enabled **Blogging Web App** which provides complete Authentication and Registeration of all users with:
+This is a **PWA** enabled **Web App** which provides complete Authentication and Registeration of all users with:
 - Google
 - Facebook
 - Local Email
 
-and user can:
+and where a user can:
 - Read blogs
 - Write blogs
-- Comment on Blogs
-- Search for a blog
+- Comment on blogs
+- Search a blog
 
 ### SERVER
 
@@ -42,6 +42,7 @@ Many security precautions have been taken:
 - ***bcrypt***: For secure password saving in the database.
 - ***csurf***: For protection against CSRF attack on Forms and fetch requests.
 - ***helmet***: For protection against common Security Vulnerabilities inExpress framework.
+- ***jsonwebtoken(JWT)***: For Secure Email Verification Links.
 - ***Content Security Policy***: For Secure Content Delivery from the server.
 - ***limiter***: For Limiting the access to data from a particular client (150 requests per hour).
 
@@ -55,19 +56,9 @@ Many security precautions have been taken:
 <br/>
 `multer` has been used for uploading images and `cloudinary` for storing images.
 
-### Express Security
-
-For security `Helmet` is used with its defaults and additionally `Content Security Policy`.
-
-Additionally other mechanisms are also used:-
-
-- **csurf** - CSRF protection is applied to the entire project. If CSRF is to be enabled only on some routes then go to ./middlewares/security/globalSecurity.js and disable it and import ./middlewares/security/csurfSetup.js to the file where it is required. for more details refer csurf.
-
-- **limiter** - to block a user from accessing a route more than a given no. of time in a set duration(eg 150 requests per hour). For more details refer limiter. How to use:-
-require the limiterSetup file: ./middlewares/security/limiterSetup.js
-this will return an express middleware which can be used on any route, router or on app.
 
 ### NPM Commands
+
 - **npm install** - installs all the dependencies
 - **npm start** - lints the server and client script, starts eslint on watch mode on server scripts and starts the project at localhost:1998 in debug mode.
 - **npm run start-w** - Restarts the server(using nodemon) on every save and lints the server and client side scripts on each save.
@@ -78,7 +69,3 @@ this will return an express middleware which can be used on any route, router or
 
 - Use cookies securely
 - Add proper Logging (Bunyan or Winston)
-- Use CORS according to your project.
-  - CORS allows other servers and domains to access/request your content. It is restricted by default
-  - A possible use case could a public API project which is used by others to use your content.
-  - you could use cors library to implement it.
