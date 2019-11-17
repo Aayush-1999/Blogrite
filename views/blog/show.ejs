@@ -64,7 +64,7 @@
             <% } %>    
         </div>
         <ul class="collection">
-            <% if(blogs.comments){
+            <% if(blog.comments){
                 blog.comments.forEach(function(comment){%>
                     <li class="collection-item avatar" style="background:rgba(26,35,126,0.05); min-height: 65px;">
                     <img src="<%= comment.author.image %>" alt="blogComment-userImage" class="circle">
