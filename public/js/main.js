@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    M.Modal.init(elems,{});
+});
+
+document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(elems,{
         coverTrigger:false,
