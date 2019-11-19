@@ -222,6 +222,10 @@ input[type=password]:focus{
     .card-two{
         height: 400px !important;
     }
+
+    .card-image .user-profile-image{
+        height: 250px !important;
+    }
 }
 
 @media only screen and (max-width:699px){
