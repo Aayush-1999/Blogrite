@@ -15,7 +15,7 @@ module.exports = passport =>{
               return done(null, false, { message: 'Email not registered' });
             }
 
-            if (user.provider !== 'local') {
+            if (user && user.provider !== 'local') {
               return done(null, false, {
                 message: `The email is registered with, ${user.provider}`,
               });

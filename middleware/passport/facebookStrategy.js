@@ -16,7 +16,7 @@ module.exports=passport=>{
                if(err) {
                   return done(err);
                }
-               else if(user.provider=="facebook"){
+               else if(user && user.provider=="facebook"){
                   return done(null, user);
                } 
                else if(!user){
