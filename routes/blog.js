@@ -35,8 +35,8 @@ router.get("/",async function(req,res){
     try{
         if(req.query.search){
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-        blogs= await Blog.find({title:regex})
-            if(foundBlog.length<1){
+        let blogs= await Blog.find({title:regex});
+            if(blogs.length<1){
                 noMatch="No Blogs found. Please try again.";
             }
             res.render("index",{blogs,noMatch});
