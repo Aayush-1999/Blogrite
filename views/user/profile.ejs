@@ -11,9 +11,11 @@
                     <span class="card-title center"><b><%= user.displayName %></b></span>
                     <h6 class="center"><p>Number of Blogs : <%= blogs.length %></p></h6>
                 </div>
-                <!-- <div class="card-action">
-                    <a href="/follow/<%= user._id %>"><button class="btn">Follow</button></a>
-                </div> -->
+                <div class="card-action">
+                    <a href="/follow/<%= user._id %>">
+                        <button class="btn btn-large indigo darken-4" >Follow</button>
+                    </a>
+                </div>
                 <% if(currentUser && user._id.equals(currentUser._id)){%>
                 <div class="card-action">
                     <a href="#upload-photo" class="modal-trigger"><p class="center text-color" style="margin:0;">Change Profile Photo</p></a>

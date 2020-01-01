@@ -27,7 +27,8 @@
         </p>
         <p class="ck-content blog-body" id="blog_content_new">                
         </p>
-        <div style="border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;">
+        <div class="divider"></div>
+        <div>
             <div class="row mt-2">
                 <div class="col s3 m2 l1">
                     <img src="<%= blog.author.image %>" alt="blog-authorImage" style="height: 4em; width:4em;" class="circle">
@@ -36,8 +37,14 @@
                     <span class="title">WRITTEN BY</span>
                     <a href="/user/<%= blog.author._id %>"><h5 class="text-color" style="margin-top: 5px"><strong><%=blog.author.displayName%></strong></h5></a>
                 </div>
+                <div class="col s6 m2 l2 ml-3">
+                    <a href="">
+                        <button class="btn indigo darken-4">Follow</button>
+                    </a>
+                </div>
             </div>
         </div>
+        <div class="divider"></div>
         <div class="row mt-2">
             <div class="col s7 m10"  style="padding-left:0;">
                 <button class="accordion btn-flat">Add Comment</button>
