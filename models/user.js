@@ -43,12 +43,12 @@ const UserSchema=new mongoose.Schema({
     	   ref: 'Notification'
     	}
     ]
-    // ,followers: [
-    // 	{
-    // 		type: mongoose.Schema.Types.ObjectId,
-    // 		ref: 'User'
-    // 	}
-    // ]    
+    ,followers: [
+    	{
+    		type: mongoose.Schema.Types.ObjectId,
+    		ref: 'User'
+    	}
+    ]    
 })
 
 module.exports=mongoose.model("User",UserSchema);
