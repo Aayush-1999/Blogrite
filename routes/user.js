@@ -35,4 +35,18 @@ router.post("/:id",middleware.isLoggedIn,upload.single('image'),async function(r
   }
 });
 
+// follow user
+// router.get('/follow/:id', middleware.isLoggedIn, async function(req, res) {
+//   try {
+//     let user = await User.findById(req.params.id);
+//     user.followers.push(req.user._id);
+//     user.save();
+//     req.flash('success', 'Successfully followed ' + user.username + '!');
+//     res.redirect('/user/' + req.params.id);
+//   } catch(err) {
+//     req.flash('error', err.message);
+//     res.redirect('back');
+//   }
+// });
+
 module.exports=router;
