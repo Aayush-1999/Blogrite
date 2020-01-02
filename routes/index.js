@@ -6,7 +6,6 @@ const express      = require("express"),
       googleAuth   = require("./auth/google"),
       facebookAuth = require("./auth/facebook");
       
-
 router.get("/",(req,res)=>{
     res.redirect("/blog"); 
 });
