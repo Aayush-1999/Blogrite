@@ -3,6 +3,7 @@ const express       = require("express");
       flash         = require("connect-flash"),
       compression   = require("compression"),  
       passportSetup = require("./passport/setup"),
+      security      = require("./security"),
       User          = require("../models/user");
 
 module.exports = app => {
@@ -19,12 +20,14 @@ module.exports = app => {
     }
 
     passportSetup(app);
+    security(app);
     
     app.use(flash());
     app.use(async function(req,res,next){
         res.locals.currentUser = req.user;
         res.locals.error  =  req.flash("error");
         res.locals.success  =  req.flash("success");
+        res.locals.csrfToken = req.csrfToken();
         
         if(req.user) {
             try {
