@@ -42,7 +42,6 @@ Many security precautions have been taken:
 - ***bcrypt***: For secure password saving in the database.
 - ***csurf***: For protection against CSRF attack on Forms and fetch requests.
 - ***helmet***: For protection against common Security Vulnerabilities inExpress framework.
-- ***jsonwebtoken(JWT)***: For Secure Email Verification Links.
 - ***Content Security Policy***: For Secure Content Delivery from the server.
 - ***limiter***: For Limiting the access to data from a particular client (150 requests per hour).
 
