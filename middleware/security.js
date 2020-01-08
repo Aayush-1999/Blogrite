@@ -1,6 +1,9 @@
 const csrf   = require("csurf"),
-      helmet = require("helmet");
+      helmet = require("helmet"),
+      RateLimiter = require('limiter').RateLimiter;
 
+const limiter = new RateLimiter(150, 'hour');
+ 
 module.exports=app=>{
     app.use(helmet());
     
@@ -19,5 +22,10 @@ module.exports=app=>{
         ignoreMethods:['GET']
     }));
 
-
+    limiter.removeTokens(1,(err,remainingRequests)=> {
+        if (remainingRequests < 1) {
+          response.writeHead(429, {'Content-Type': 'text/plain;charset=UTF-8'});
+          response.end('429 Too Many Requests - your IP is being rate limited');
+        }
+    });
 }
