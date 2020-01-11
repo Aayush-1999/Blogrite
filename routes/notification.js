@@ -25,7 +25,6 @@ router.get("/", middleware.isLoggedIn, async function(req, res) {
       let notification = await Notification.findById(req.params.id);
       notification.isRead = true;
       notification.save();
-      console.log("done");
       if(notification.blogId){
         res.redirect("/blog/"+notification.blogId);
       }
