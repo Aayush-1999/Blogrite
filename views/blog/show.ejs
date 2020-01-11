@@ -33,15 +33,26 @@
                 <div class="col s3 m2 l1">
                     <img src="<%= blog.author.image %>" alt="blog-authorImage" style="height: 4em; width:4em;" class="circle">
                 </div>
-                <div class="col s9 m8 l8 ml-1 mr-2">
+                <div class="col s9 m8 l7 ml-1 mr-2">
                     <span class="title">WRITTEN BY</span>
                     <a href="/user/<%= blog.author._id %>"><h5 class="text-color" style="margin-top: 5px"><strong><%=blog.author.displayName%></strong></h5></a>
                 </div>
-                <div class="col s6 m2 l2 ml-3">
-                    <a href="/user/follow/<%= blog.author._id %>">
-                        <button class="btn indigo darken-4">Follow</button>
-                    </a>
-                </div>
+                <% if(currentUser && !blog.author._id.equals(currentUser._id)){%>
+                    <div class="col s6 m2 l3 ml-3">
+                        <% if( currentUser && blog.author.followers.includes(currentUser._id)){ %>
+                            <a href="/user/unfollow/<%= blog.author._id %>" class="waves-effect waves-light btn indigo darken-4">
+                                <i class="material-icons left">people</i>
+                                Following
+                            </a>
+                        <%}
+                        else{%>
+                            <a href="/user/follow/<%= blog.author._id %>" class="waves-effect waves-light btn indigo darken-4">
+                                <i class="material-icons left">person_add</i>
+                                Follow
+                            </a>
+                        <%}%>
+                    </div>
+                <% } %>
             </div>
         </div>
         <div class="divider"></div>
@@ -80,6 +91,7 @@
                     <p><%=comment.text%></p>
                     <%if(currentUser && comment.author._id.equals(currentUser._id)){%>
                         <form action="/blog/<%=blog._id%>/comment/<%=comment._id%>?_method=DELETE" method="POST" class="secondary-content" >
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
                             <button class="btn-flat"><i class="material-icons">delete</i></button>
                         </form>
                     <% } %>
@@ -99,6 +111,7 @@
     <div class="modal-footer">
         <form action="/blog/<%=blog._id%>?_method=DELETE" method="POST">
             <button class="waves-effect waves-light btn indigo darken-4">Yes</button>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
             <a href="#!" class="modal-close waves-effect waves-light btn indigo darken-4">No</a>
         </form>
     </div>
@@ -108,6 +121,5 @@
     var blog_body=document.getElementById("blog_content_old").innerText;
     document.getElementById("blog_content_new").innerHTML=blog_body;
 </script>
-<script type="text/javascript" src="/js/single-blog.js" ></script>
 
 <% include ../partials/footer %>

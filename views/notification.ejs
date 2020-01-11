@@ -4,11 +4,19 @@
 	<div class="section white mt-2" style="padding-left: 20px; padding-right: 20px;">
 		<h2 class="header center text-color" style="margin-top: 0.85rem;">Notifications</h2>
 		<div class="collection" >
-			<% allNotifications.forEach(function(notification) { %>
-			<a href="/blog/<%= notification.blogId %>" class="collection-item">
-				<h6 style="color: black;"><%= notification.username %> commented on <%= notification.blog %></h6>
-			</a>
-			<% }); %>
+			<% allNotifications.forEach(function(notification) {
+				if(notification.blogId){ %>
+					<a href="/notification/<%= notification._id %>" class="collection-item">
+						<h6 style="color: black;"><%= notification.username %> commented on <%= notification.blog %></h6>
+					</a>
+				<% }
+				else { %>
+					<a href="/notification/<%= notification._id %>" class="collection-item">
+						<h6 style="color: black;"><%= notification.username %> has started following you %> 
+						</h6>
+					</a>
+				<% }
+			}); %>
 		</div>
 			
 

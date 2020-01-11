@@ -10,15 +10,31 @@
                 <div class="card-content">
                     <span class="card-title center"><b><%= user.displayName %></b></span>
                     <h6 class="center"><p>Number of Blogs : <%= blogs.length %></p></h6>
+                    <h6 class="center"><p>Followers : <%= user.followers.length %></p></h6>
+                    <h6 class="center"><p>Following : <%= user.following.length %></p></h6>
                 </div>
-                <div class="card-action">
-                    <a href="/user/follow/<%= user._id %>">
-                        <button class="btn btn-large indigo darken-4" >Follow</button>
-                    </a>
-                </div>
+                <% if ( currentUser && !user._id.equals(currentUser._id) ){ %>
+                    <div class="card-action">
+                        <% if( currentUser && user.followers.includes(currentUser._id)){ %>
+                            <a href="/user/unfollow/<%= user._id %>" class="waves-effect waves-light btn btn-large indigo darken-4">
+                                <i class="material-icons left">people</i>
+                                Following
+                            </a>
+                        <%}
+                        else{%>
+                            <a href="/user/follow/<%= user._id %>" class="btn btn-large indigo darken-4">
+                                <i class="material-icons left">person_add</i>
+                                Follow
+                            </a>
+                        <%}%>
+                    </div>
+                <%} %>
+
                 <% if(currentUser && user._id.equals(currentUser._id)){%>
                 <div class="card-action">
-                    <a href="#upload-photo" class="modal-trigger"><p class="center text-color" style="margin:0;">Change Profile Photo</p></a>
+                    <a href="#upload-photo" class="modal-trigger">
+                        <p class="center text-color" style="margin:0;">Change Profile Photo</p>
+                    </a>
                 </div>
                 <% } %>
             </div>
@@ -43,9 +59,18 @@
                         </div>
                     </a>
                 <%}
-            } else {%>
-                <p><h3 class="center section white text-color" style="margin: 0; padding: 3px;">You have no blogs !</h3></p>            
-            <% } %>                
+            } else {
+                if( currentUser && user._id.equals(currentUser._id)){%>
+                    <p>
+                        <h3 class="center section white text-color" style="margin: 0; padding: 3px;">You have no blogs !</h3>
+                    </p>                
+                <%}
+                else{%>
+                    <p>
+                        <h3 class="center section white text-color" style="margin: 0; padding: 3px;">No blogs !</h3>
+                    </p>
+                <%}
+             } %>                
         </div>
     </div>
 

@@ -19,9 +19,16 @@
                         <ul id="dropdown1" class="dropdown-content" >
                             <% notifications.forEach(function(notification) { %>                          
                                 <li style="width: 200px;">
-                                    <a href="/notification/<%= notification._id %>">
-                                        <%= notification.username %> commented on <%= notification.blog %> %> 
-                                    </a>
+                                    <% if(notification.blogId){ %>
+                                        <a href="/notification/<%= notification._id %>" class="collection-item">
+                                            <%= notification.username %> commented on <%= notification.blog %>
+                                        </a>
+                                    <% }
+                                    else { %>
+                                        <a href="/notification/<%= notification._id %>" class="collection-item">
+                                            <%= notification.username %> has started following you %> 
+                                        </a>
+                                    <% }%>
                                 </li>
                                 <li class="divider" tabindex="-1"></li>
                             <% }); %>
