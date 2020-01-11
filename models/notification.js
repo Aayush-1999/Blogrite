@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 
 var notificationSchema = new mongoose.Schema({
 	username: String,
+	userId:String,
 	blog:String,
 	blogId:String,
 	isRead: { 
