@@ -1,7 +1,7 @@
 const express         =  require("express");
       router          =  express.Router();
       User            =  require("../models/user");
-      Notification    =  require("../models/notification");
+      Notification    =  require("../models/notification"),
       middleware      =  require("../middleware/verify");
 
 // view all notifications
@@ -25,7 +25,13 @@ router.get("/", middleware.isLoggedIn, async function(req, res) {
       let notification = await Notification.findById(req.params.id);
       notification.isRead = true;
       notification.save();
-      res.redirect("/blog/"+notification.blogId);
+      console.log("done");
+      if(notification.blogId){
+        res.redirect("/blog/"+notification.blogId);
+      }
+      else{
+        res.redirect("/user/"+notification.userId);
+      }
     } 
     catch(err) {
       req.flash("error", err.message);

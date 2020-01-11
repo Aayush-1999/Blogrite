@@ -2,6 +2,7 @@ const express        = require("express"),
       router         = express.Router({mergeParams:true}),
       Blog           = require("../models/blog"),
       Comment        = require("../models/comment"),
+      Notification   = require("../models/notification"),
       User           = require("../models/user"),
       methodoverride = require("method-override"),
       middleware     = require("../middleware/verify");
