@@ -13,8 +13,8 @@
                     <h6 class="center"><p>Followers : <%= user.followers.length %></p></h6>
                     <h6 class="center"><p>Following : <%= user.following.length %></p></h6>
                 </div>
-                <% if ( currentUser && !user._id.equals(currentUser._id) ){ %>
-                    <div class="card-action">
+                <div class="card-action">
+                    <% if ( currentUser && !user._id.equals(currentUser._id) ){ %>                    
                         <% if( currentUser && user.followers.includes(currentUser._id)){ %>
                             <a href="/user/unfollow/<%= user._id %>" class="waves-effect waves-light btn btn-large indigo darken-4">
                                 <i class="material-icons left">people</i>
@@ -27,9 +27,14 @@
                                 Follow
                             </a>
                         <%}%>
-                    </div>
-                <%} %>
-
+                    <%} 
+                    else if(!currentUser){%>
+                        <a href="/user/follow/<%= user._id %>" class="btn btn-large indigo darken-4">
+                            <i class="material-icons left">person_add</i>
+                            Follow
+                        </a>
+                    <%}%>
+                </div>
                 <% if(currentUser && user._id.equals(currentUser._id)){%>
                 <div class="card-action">
                     <a href="#upload-photo" class="modal-trigger">
