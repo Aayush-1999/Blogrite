@@ -14,8 +14,10 @@ This is a **PWA** enabled **Web App** which provides complete Authentication and
 and where a user can:
 - Read blogs
 - Write blogs
+- Update blogs
 - Comment on blogs
 - Search a blog
+- Follow/Unfollow others
 
 ### SERVER
 
@@ -55,6 +57,9 @@ Many security precautions have been taken:
 <br/>
 `multer` has been used for uploading images and `cloudinary` for storing images.
 
+### Response Compression
+
+The response object is gzip compressed using [compression](https://www.npmjs.com/package/compression). To request for an uncompressed response use **x-no-compression** in the request header.
 
 ### NPM Commands
 
