@@ -6,12 +6,8 @@
 <a><img alt="Code Size" src="https://img.shields.io/badge/code%20size-110%20kB-orange"></a>
 <a><img alt="Website Up" src="https://img.shields.io/website-up-down-green-red/http/shields.io.svg"></a>
 
-This is a **PWA** enabled **Web App** which provides complete Authentication and Registeration of all users with:
-- Google
-- Facebook
-- Local Email
+This is a **PWA** enabled **Web App** which provides complete Authentication and Registeration of all users with Google, Facebook and Local Email. On Blogrite a user can:
 
-and where a user can:
 - Read blogs
 - Write blogs
 - Update blogs
