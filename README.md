@@ -3,8 +3,9 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9b4e442c5ebb46df86ea3cd6fb65bb1a)](https://app.codacy.com/manual/aayushaggarwal2007/Blogrite?utm_source=github.com&utm_medium=referral&utm_content=Aayush-1999/Blogrite&utm_campaign=Badge_Grade_Dashboard)
 ![code size](https://img.shields.io/badge/code%20size-110%20kB-orange)
 ![licence](https://img.shields.io/github/license/Aayush-1999/Blogrite)
-![dependencies](https://img.shields.io/david/Aayush-1999/Blogrite?label=dependencies)
+![npm](https://img.shields.io/badge/npm-v6.13.0-blue)
 ![Website](https://img.shields.io/website?up_color=light%20green&up_message=up&url=https%3A%2F%2Fgithub.com%2FAayush-1999%2FBlogrite)
+![dependencies](https://img.shields.io/david/Aayush-1999/Blogrite?label=dependencies)
 
 This is a **PWA** enabled **Web App** which provides complete Authentication and Registeration of all users with Google, Facebook and Local Email. On Blogrite a user can:
 
