@@ -1,12 +1,10 @@
 # BlogRite
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9b4e442c5ebb46df86ea3cd6fb65bb1a)](https://app.codacy.com/manual/aayushaggarwal2007/Blogrite?utm_source=github.com&utm_medium=referral&utm_content=Aayush-1999/Blogrite&utm_campaign=Badge_Grade_Dashboard)
-
-<a><img alt="Code Quality" src="https://img.shields.io/badge/code%20quality-A-brightgreen"></a>
-<a><img alt="Dependanices upto date" src="https://img.shields.io/david/Aayush-1999/Blogrite?label=dependencies"></a>
-<a><img alt="GNU-v3" src="https://img.shields.io/badge/License-GPLv3-blue.svg"></a>
-<a><img alt="Code Size" src="https://img.shields.io/badge/code%20size-110%20kB-orange"></a>
-<a><img alt="Website Up" src="https://img.shields.io/website-up-down-green-red/http/shields.io.svg"></a>
+![code size](https://img.shields.io/badge/code%20size-110%20kB-orange)
+![licence](https://img.shields.io/github/license/Aayush-1999/Blogrite)
+![dependencies](https://img.shields.io/david/Aayush-1999/Blogrite?label=dependencies)
+![Website](https://img.shields.io/website?up_color=light%20green&up_message=up&url=https%3A%2F%2Fgithub.com%2FAayush-1999%2FBlogrite)
 
 This is a **PWA** enabled **Web App** which provides complete Authentication and Registeration of all users with Google, Facebook and Local Email. On Blogrite a user can:
 
