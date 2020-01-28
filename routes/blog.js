@@ -11,21 +11,21 @@ router.get("/create",middleware.isLoggedIn,(req,res)=>{
 });
 
 //CREATING NEW BLOG
-router.post("/" ,middleware.isLoggedIn,upload.single('image'),async function(req,res){
+router.post("/" ,middleware.isLoggedIn,upload.single("image"),async function(req,res){
     try{
-        let result= await cloudinary.uploader.upload(req.file.path)// can also add webpurifier to purify images uploaded on server (for more details see cloudinary addons)
+        let result= await cloudinary.uploader.upload(req.file.path);// can also add webpurifier to purify images uploaded on server (for more details see cloudinary addons)
         // add cloudinary url for the image to the campground object under image property
         req.body.blog.image = result.secure_url;
-        // add image's public url to the campground object for identifying and deleting image on the cloudinary
+        // add image"s public url to the campground object for identifying and deleting image on the cloudinary
         req.body.blog.imageId = result.public_id;
         // add author to campground
-        req.body.blog.author = req.user._id
+        req.body.blog.author = req.user._id;
         let blog=await Blog.create(req.body.blog);
         //redirect back to blogs page
         res.redirect("/blog/"+blog.id);
     } catch(err) {
-        req.flash('error', err.message);
-        res.redirect('back');
+        req.flash("error", err.message);
+        res.redirect("back");
     }
 });
 
@@ -34,7 +34,7 @@ router.get("/",async function(req,res){
     let noMatch=null;
     try{
         if(req.query.search){
-        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        const regex = new RegExp(escapeRegex(req.query.search), "gi");
         let blogs= await Blog.find({title:regex});
             if(blogs.length<1){
                 noMatch="No Blogs found. Please try again.";
@@ -82,7 +82,7 @@ router.get("/:id/edit",middleware.checkBlogOwnership,(req,res)=>{
 })
 
 //UPDATE BLOG
-router.put("/:id",middleware.checkBlogOwnership,upload.single('image'),(req,res)=>{
+router.put("/:id",middleware.checkBlogOwnership,upload.single("image"),(req,res)=>{
     Blog.findById(req.params.id,async function(err,blog){
         if(err){
             res.redirect("back");
@@ -119,11 +119,11 @@ router.delete("/:id",middleware.checkBlogOwnership,(req,res)=>{
            return res.redirect("back");  
         }
      });
-})
+});
 
 //FUNCTION FOR ESCAPING SEARCH PARAMETER
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-};
+}
 
 module.exports=router;

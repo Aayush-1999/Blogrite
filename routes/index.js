@@ -19,7 +19,7 @@ router.get("/register",(req,res)=>{
 router.post("/register",async function(req,res){
     try{
         let saltRounds=10,hashcode;    
-        hashcode = await bcrypt.hash(req.body.password, saltRounds)
+        hashcode = await bcrypt.hash(req.body.password, saltRounds);
         let user = await User.create({
             firstName:req.body.firstname,
             lastName:req.body.lastname,

@@ -8,15 +8,15 @@ module.exports=passport=>{
       clientID: process.env.FACEBOOK_APP_ID ,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
       callbackURL: `${process.env.HOST}/auth/facebook/callback`,
-      profileFields: ['id', 'displayName', 'picture.type(large)', 'email','name']
+      profileFields: ["id", "displayName", "picture.type(large)", "email","name"]
       },
-      (accessToken, refreshToken, profile, done)=> {
+      (accessToken, refreshToken, profile, done) =>{
          process.nextTick(function(){
-            User.findOne({ email: profile.emails[0].value },(err, user)=> {
+            User.findOne({ email: profile.emails[0].value },(err, user) =>{
                if(err) {
                   return done(err);
                }
-               else if(user && user.provider=="facebook"){
+               else if(user && user.provider==="facebook"){
                   return done(null, user);
                } 
                else if(!user){

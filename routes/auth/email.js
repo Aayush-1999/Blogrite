@@ -14,7 +14,7 @@ const smtpTransport = nodemailer.createTransport({
     subject: Subject ,
     text: body
   };
-  smtpTransport.sendMail(mailOptions, (err)=> {
+  smtpTransport.sendMail(mailOptions, (err)=>{
     return err;
   });
 }

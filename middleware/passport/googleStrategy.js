@@ -5,20 +5,20 @@ const GoogleStrategy = require("passport-google-oauth20"),
 
 
 //PASSPORT GOOGLE CONFIGURATION
-module.exports = passport => {
+module.exports = passport =>{
    passport.use(new GoogleStrategy({
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: `${process.env.HOST}/auth/google/callback`,
-      profileFields: ['id', 'displayName', 'photos', 'email','name']
+      profileFields: ["id", "displayName", "photos", "email","name"]
    },
-   (accessToken, refreshToken, profile, done)=> {
+   (accessToken, refreshToken, profile, done) =>{
       process.nextTick(function(){
-            User.findOne({email: profile.emails[0].value },(err, user)=> {
+            User.findOne({email: profile.emails[0].value },(err, user) =>{
                if(err) {
                   return done(err);
                }
-               else if(user && user.provider=="google"){
+               else if(user && user.provider==="google"){
                   return done(null, user);
                } 
                else if(!user){

@@ -35,7 +35,7 @@ router.post("/",middleware.isLoggedIn,async function(req,res){
  //DELETE COMMENT
  router.delete("/:comment_id",middleware.checkCommentOwnership,(req,res)=>{
      Blog.findById(req.params.id,(err,blog)=>{
-        if(err) console.log(err);
+        if(err) return("back");
         else{
             let index=blog.comments.indexOf(req.params.comment_id);
             blog.comments.splice(index,1);
@@ -45,7 +45,7 @@ router.post("/",middleware.isLoggedIn,async function(req,res){
                 else    res.redirect("/blog/"+req.params.id);
              });        
         }
-     })
+     });
  });
 
 

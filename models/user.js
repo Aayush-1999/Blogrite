@@ -37,24 +37,24 @@ const UserSchema=new mongoose.Schema({
         required:true,
         default:"local"
     },
-    notifications: [
+    notifications:[
     	{
-    	   type: mongoose.Schema.Types.ObjectId,
-    	   ref: 'Notification'
+    	   type:mongoose.Schema.Types.ObjectId,
+    	   ref:"Notification"
     	}
     ],
-    followers: [
+    followers:[
     	{
-    		type: mongoose.Schema.Types.ObjectId,
-    		ref: 'User'
+    		type:mongoose.Schema.Types.ObjectId,
+    		ref:"User"
     	}
     ],
     following:[
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"User"
         }
     ] 
-})
+});
 
 module.exports=mongoose.model("User",UserSchema);

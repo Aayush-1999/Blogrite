@@ -7,16 +7,16 @@ const express      = require("express"),
       email        = require("./auth/email");
 
 //SHOW FORM FOR FORGOT PASSWORD
-router.get('/forgot',(req, res)=> {
+router.get("/forgot",(req, res)=> {
     res.render("forgot");
 });
 
 //ROUTE FOR SENDING MAIL WITH RESET PASSWORD LINK
-router.post('/forgot',(req, res, next)=> {
+router.post("/forgot",(req, res, next)=> {
     async.waterfall([
       function(done) {
         crypto.randomBytes(20,(err, buf)=> {
-          var token = buf.toString('hex');
+          var token = buf.toString("hex");
           done(err, token);
         });
       },
@@ -35,10 +35,10 @@ router.post('/forgot',(req, res, next)=> {
       },
       function(token, user, done) {
           let err=email(user.email,"Password Reset",
-            'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-            'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-            'http://' + req.headers.host + '/resetpas/' + token + '\n\n' +
-            'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+            "You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n" +
+            "Please click on the following link, or paste this into your browser to complete the process:\n\n" +
+            "http://" + req.headers.host + "/resetpas/" + token + "\n\n" +
+            "If you did not request this, please ignore this email and your password will remain unchanged.\n"
            )
            req.flash("success", "An e-mail has been sent to " + user.email + " with further instructions.");
            done(err,"done");
@@ -69,7 +69,7 @@ router.post("/resetpas/:token",(req, res)=> {
                     req.flash("error", "Password reset token is invalid or has expired.");
                     return res.redirect("back");
                 }
-                else if(req.body.password == req.body.confirm) {    
+                else if(req.body.password === req.body.confirm) {    
                     bcrypt.hash(req.body.password,10).then(function(hash) {
                         user.password=hash;
                         user.resetPasswordToken = undefined;
@@ -80,15 +80,15 @@ router.post("/resetpas/:token",(req, res)=> {
                 }
                 else {
                     req.flash("error", "Passwords do not match.");
-                    return res.redirect('back');
+                    return res.redirect("back");
                 }
             });
         },
         function(user, done) {
-            let err=email(user.email,'Your password has been changed',
-                'Hello,\n\n' +
-                'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
-            )
+            let err=email(user.email,"Your password has been changed",
+                "Hello,\n\n" +
+                "This is a confirmation that the password for your account " + user.email + " has just been changed.\n"
+            );
             req.flash("success","Your password has been changed.");
             done(err);
         }

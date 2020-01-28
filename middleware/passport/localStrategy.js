@@ -5,17 +5,17 @@ const LocalStrategy = require("passport-local"),
 module.exports = passport =>{
     passport.use(new LocalStrategy(
         {
-            usernameField: 'email'
+            usernameField: "email"
         },
         (email, password, done)=> {
           User.findOne({ email },(err, user)=>{
             if (err) { return done(err); }
   
             if (!user) {
-              return done(null, false, { message: 'Email not registered' });
+              return done(null, false, { message: "Email not registered" });
             }
 
-            if (user && user.provider !== 'local') {
+            if (user && user.provider !== "local") {
               return done(null, false, {
                 message: `The email is registered with, ${user.provider}`,
               });
@@ -26,11 +26,11 @@ module.exports = passport =>{
 
               if(result) return done(null, user);
 
-              else return done(null, false, { message: 'Incorrect password.' });
+              else return done(null, false, { message: "Incorrect password." });
 
             });
           }); 
         }
       )
     );
-}
+};
