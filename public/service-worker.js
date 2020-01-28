@@ -1,7 +1,7 @@
 "use strict";
 
-const CACHE_NAME = "static-cache-v1";
-const DATA_CACHE_NAME = "data-cache-v1";
+const CACHE_NAME = "static-cache-v2";
+const DATA_CACHE_NAME = "data-cache-v2";
 
 const FILES_TO_CACHE = [
    "/",
@@ -15,7 +15,6 @@ const FILES_TO_CACHE = [
    "/images/fb-icon-1.jpg",
    "/images/google-icon.svg",
    "/js/main.js",
-   "/js/single-blog.js",
    "/stylesheets/style.css",
    "/css/materialize.min.css",
    "/js/materialize.min.js",
@@ -113,37 +112,6 @@ self.addEventListener("fetch", (evt) => {
         }));
     return;
   }
-  // if (evt.request.url.includes("/")) {
-  //   evt.respondWith(
-  //       caches.open(DATA_CACHE_NAME).then((cache) => {
-  //         return fetch(evt.request)
-  //             .then((response) => {
-  //               if (response.status === 200) {
-  //                 cache.put(evt.request.url, response.clone());
-  //               }
-  //               return response;
-  //             }).catch((err) => {
-  //               return cache.match(evt.request)
-  //                 .then((response)=>{
-  //                   if(response){
-  //                     if(response.redirected){
-  //                       return cleanResponse(response);
-  //                     }
-  //                     else{
-  //                       return response;
-  //                     }
-  //                   }
-  //                   else{
-  //                     return caches.open(CACHE_NAME)
-  //                       .then((cache)=>{
-  //                           return cache.match("/offline.html");
-  //                       });        
-  //                   }
-  //                 })
-  //             });
-  //       }));
-  //   return;
-  // }
   // evt.respondWith(
   //   caches.open(CACHE_NAME).then((cache) => {
   //     return cache.match(evt.request)
@@ -187,33 +155,4 @@ self.addEventListener("fetch", (evt) => {
       );
     return;
   }
-  //   evt.respondWith(
-  //     caches.match(evt.request)
-  //       .then((response)=> {
-  //         if (response) {
-  //           if(response.redirected){
-  //             return cleanResponse(response);
-  //           }
-  //         else{
-  //           return response;
-  //         }
-  //       } else {
-  //         return fetch(evt.request)
-  //           .then((res)=> {
-  //             return caches.open(DATA_CACHE_NAME)
-  //               .then((cache)=> {
-  //                 cache.put(evt.request.url, res.clone());
-  //                 return res;
-  //               })
-  //           })
-  //           .catch(function (err) {
-  //             return caches.open(CACHE_NAME)
-  //               .then((cache)=>{
-  //                   return cache.match("/offline.html");
-  //               });
-  //           });
-  //       }
-  //     })
-  // );
-  // }
 });
