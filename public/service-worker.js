@@ -131,8 +131,7 @@ self.addEventListener("fetch", (evt) => {
               console.log("network response /");
               return res;
             })
-        })
-        .catch((err)=> {
+        }).catch((err)=> {
           return caches.match(evt.request)
             .then((response)=> {
               if (response) {

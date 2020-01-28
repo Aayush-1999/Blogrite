@@ -11,13 +11,13 @@ module.exports = app => {
     app.use(compression({ filter: shouldCompress }));
  
     function shouldCompress (req, res) {
-        if (req.headers['x-no-compression']) {
+        if (req.headers["x-no-compression"]) {
             // don't compress responses with this request header
             return false;
         }   
         // fallback to standard filter function
         return compression.filter(req, res);
-    };
+    }
 
     passportSetup(app);
     security(app);
@@ -32,7 +32,7 @@ module.exports = app => {
         if(req.user) {
             try {
               let user = await User.findById(req.user._id).populate("notifications", null, { isRead: false }).exec();
-              //saving user's notifications to local variable notification
+              //saving user"s notifications to local variable notification
               res.locals.notifications = user.notifications.reverse();
             } catch(err) {
               res.redirect("/");

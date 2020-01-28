@@ -20,7 +20,7 @@ router.get("/", middleware.isLoggedIn, async function(req, res) {
   });
   
   // handle notification
-  router.get('/:id', middleware.isLoggedIn, async function(req, res) {
+  router.get("/:id", middleware.isLoggedIn, async function(req, res) {
     try {
       let notification = await Notification.findById(req.params.id);
       notification.isRead = true;

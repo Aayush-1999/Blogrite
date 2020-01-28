@@ -19,13 +19,13 @@ router.get("/:id", async function(req, res) {
 });
 
 //user profile photo
-router.post("/:id",middleware.isLoggedIn,upload.single('image'),async function(req,res){
+router.post("/:id",middleware.isLoggedIn,upload.single("image"),async function(req,res){
   try{
-    let result= await cloudinary.uploader.upload(req.file.path)// can also add webpurifier to purify images uploaded on server (for more details see cloudinary addons)
+    let result= await cloudinary.uploader.upload(req.file.path);// can also add webpurifier to purify images uploaded on server (for more details see cloudinary addons)
     let user=await User.findById(req.params.id).exec();
     // add cloudinary url for the image to the user object under image property
     user.image = result.secure_url;
-    // add image's public url to the user object for identifying and deleting image on the cloudinary
+    // add image"s public url to the user object for identifying and deleting image on the cloudinary
     user.imageId = result.public_id;
     user.save();
     //redirect back to user page
@@ -37,7 +37,7 @@ router.post("/:id",middleware.isLoggedIn,upload.single('image'),async function(r
 });
 
 // follow user
-router.get('/follow/:id', middleware.isLoggedIn, async function(req, res) {
+router.get("/follow/:id", middleware.isLoggedIn, async function(req, res) {
   try {
     let followUser = await User.findById(req.params.id);
     let followingUser = await User.findById(req.user._id);
@@ -46,20 +46,20 @@ router.get('/follow/:id', middleware.isLoggedIn, async function(req, res) {
     let newNotification = {
       username: req.user.displayName,
       userId  : req.user._id
-    }
+    };
   let notification = await Notification.create(newNotification);
   followUser.notifications.push(notification);
     followUser.save();
     followingUser.save();
-    res.redirect('/user/' + req.params.id);
+    res.redirect("/user/" + req.params.id);
   } catch(err) {
-    req.flash('error', err.message);
-    res.redirect('back');
+    req.flash("error", err.message);
+    res.redirect("back");
   }
 });
 
 // unfollow user
-router.get('/unfollow/:id', middleware.isLoggedIn, async function(req, res) {
+router.get("/unfollow/:id", middleware.isLoggedIn, async function(req, res) {
   try {
     let followUser = await User.findById(req.params.id);
     let followingUser = await User.findById(req.user._id);
@@ -67,10 +67,10 @@ router.get('/unfollow/:id', middleware.isLoggedIn, async function(req, res) {
     followingUser.following.splice(followingUser.following.indexOf(req.params.id),1);
     followUser.save();
     followingUser.save();
-    res.redirect('/user/' + req.params.id);
+    res.redirect("/user/" + req.params.id);
   } catch(err) {
-    req.flash('error', err.message);
-    res.redirect('back');
+    req.flash("error", err.message);
+    res.redirect("back");
   }
 });
 
