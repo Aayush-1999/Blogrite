@@ -57,7 +57,7 @@ Many security precautions have been taken:
 
 The response object is gzip compressed using [compression](https://www.npmjs.com/package/compression). To request for an uncompressed response use **x-no-compression** in the request header.
 
-### NPM Commands
+<!-- ### NPM Commands
 
 - **npm install** - installs all the dependencies
 - **npm start** - lints the server and client script, starts eslint on watch mode on server scripts and starts the project at localhost:1998 in debug mode.
@@ -68,4 +68,4 @@ The response object is gzip compressed using [compression](https://www.npmjs.com
 ### To-Do
 
 - Use cookies securely
-- Add proper Logging (Bunyan or Winston)
+- Add proper Logging (Bunyan or Winston) -->
