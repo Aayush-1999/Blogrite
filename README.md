@@ -9,12 +9,14 @@
 
 This is a **PWA** enabled **Web App** which provides complete Authentication and Registeration of all users with Google, Facebook and Local Email. On Blogrite a user can:
 
-- Read blogs
-- Write blogs
-- Update blogs
+- Read & Write blogs
+- Update & Delete blogs
 - Comment on blogs
-- Search a blog
+- Delete comments
+- Search blogs
+- See notifications
 - Follow/Unfollow others
+- Manage user profile
 
 ### SERVER
 

@@ -16,12 +16,8 @@ module.exports = app =>{
     app.use(passport.initialize());
     app.use(passport.session());
 
-    //LOCAL STRATEGY CONFIGURATION
-    // passport.use(new LocalStrategy(User.authenticate()));
     local(passport);
-
     google(passport);
-
     facebook(passport);
 
     passport.serializeUser((user, done)=> {
